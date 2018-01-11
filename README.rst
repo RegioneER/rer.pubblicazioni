@@ -6,7 +6,7 @@
 rer.pubblicazioni
 =================
 
-Tell me what your product does
+A new Plone5 plugin for the Regione Emilia-Romagna that manage publications.
 
 Features
 --------
