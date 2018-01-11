@@ -32,4 +32,11 @@
       factory=".setuphandlers.HiddenProfiles"
       name="rer.pubblicazioni-hiddenprofiles" />
 
+  <!-- VOCABOLARI -->
+  <utility
+    factory=".vocabularies.Lingue"
+    name="rer.pubblicazioni.lingue"
+    />
+
+
 </configure>
