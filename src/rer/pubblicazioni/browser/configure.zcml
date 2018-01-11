@@ -35,4 +35,16 @@
       permission="zope2.View"
       />
 
+  <!-- vista per il tipo: Pubblicazione -->
+  <browser:page
+      name="pubblicazione_main_view"
+      for="rer.pubblicazioni.interfaces.IPubblicazione"
+      class=".views.PubblicazioneView"
+      template="templates/pubblicazione_view.pt"
+      layer="rer.pubblicazioni.interfaces.IRerPubblicazioniLayer"
+      permission="zope2.View"
+      menu="plone_displayviews"
+      title="Pubblicazione - view"
+      />
+
 </configure>

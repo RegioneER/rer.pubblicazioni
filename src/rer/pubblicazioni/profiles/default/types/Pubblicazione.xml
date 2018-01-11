@@ -47,11 +47,11 @@
 
   <!-- View information -->
   <property name="add_view_expr">string:${folder_url}/++add++Pubblicazione</property>
-  <property name="immediate_view">view</property>
-  <property name="default_view">view</property>
+  <property name="immediate_view">pubblicazione_main_view</property>
+  <property name="default_view">pubblicazione_main_view</property>
   <property name="default_view_fallback">False</property>
   <property name="view_methods">
-    <element value="view" />
+    <element value="pubblicazione_main_view"/>
   </property>
 
   <!-- Method aliases -->

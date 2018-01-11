@@ -23,11 +23,10 @@ class RerPubblicazioniUtilsView(BrowserView):
             entry_name
         )
         try:
-            value = api.portal.get_registry_record(
-                                                setting_name).encode('utf-8')
+            value = api.portal.get_registry_record(setting_name)
         except (InvalidParameterError, AttributeError) as err:
             logger.exception(err)
-            return None
+            return ""
         if not value:
-            return None
-        return value
+            return ""
+        return value.encode('utf-8')
