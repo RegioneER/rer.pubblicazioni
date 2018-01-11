@@ -17,14 +17,16 @@ class RerPubblicazioniUtilsView(BrowserView):
     @view.memoize
     def extract_value_from_settings(self, entry_name):
         """ this one is the one to get a simple value"""
-        setting_name = \
-            'comunearezzointranet.rubrica.browser.'
-        'settings.IRerPubblicazioniSettings.' + entry_name
+        setting_name = "{}{}{}".format(
+            'rer.pubblicazioni.browser.',
+            'settings.IRerPubblicazioniSettings.',
+            entry_name
+        )
         try:
             value = api.portal.get_registry_record(
                                                 setting_name).encode('utf-8')
-        except InvalidParameterError as e:
-            logger.exception(e)
+        except (InvalidParameterError, AttributeError) as err:
+            logger.exception(err)
             return None
         if not value:
             return None
