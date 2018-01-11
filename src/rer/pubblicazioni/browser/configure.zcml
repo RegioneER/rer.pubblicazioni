@@ -18,4 +18,21 @@
       directory="static"
       />
 
+  <!-- Pannello di controllo -->
+  <browser:page
+      name="rer-pubblicazioni-settings"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".settings.RerPubblicazioniSettingsView"
+      permission="cmf.ManagePortal"
+      />
+
+  <!-- Vista di aiuto/supporto -->
+  <browser:page
+      for="*"
+      name="rer-pubblicazioni-utils-view"
+      class=".utils_view.RerPubblicazioniUtilsView"
+      allowed_interface="rer.pubblicazioni.browser.interfaces.IRerPubblicazioniUtilsView"
+      permission="zope2.View"
+      />
+
 </configure>
