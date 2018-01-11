@@ -24,7 +24,7 @@ class IPubblicazione(Interface):
         required=False,
     )
 
-    publicationDate = schema.Datetime(
+    publicationDate = schema.Date(
         title=_(u'rer_publication_date', default=u'Date'),
         description=_(
             u'help_rer_publication_date',
