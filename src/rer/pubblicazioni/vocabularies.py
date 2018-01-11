@@ -13,13 +13,15 @@ class Lingue(object):
     def get_terms(self, context):
         view = getMultiAdapter((context, context.REQUEST),
                                name="rer-pubblicazioni-utils-view")
-        view.extract_value_from_settings('lingue')
+        if not view.extract_value_from_settings('lingue'):
+            terms = [SimpleTerm(title=u'-- aggiungi lingue dal pannello di controllo --', value='')]
+            return terms
         terms = [SimpleTerm(title=value,
-                            value=value) for
-                 value in
+                            value=value)
+                 for value in
                  view.extract_value_from_settings('lingue').split('\r\n')
                  ]
-        terms.insert(0, SimpleTerm(title=u'-- select a value --', value=''))
+        # terms.insert(0, SimpleTerm(title=u'-- select a value --', value=''))
         return terms
 
     def __call__(self, context):
