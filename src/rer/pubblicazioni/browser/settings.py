@@ -18,7 +18,18 @@ class IRerPubblicazioniLingueSettings(model.Schema):
         required=False)
 
 
-class IRerPubblicazioniSettings(IRerPubblicazioniLingueSettings):
+class IRerPubblicazioniTipologieSettings(model.Schema):
+    """ Settaggio per le lingue delle pubblicazioni.
+    """
+
+    tipologie = schema.Text(
+        title=u"Tipologie",
+        description=u"Tipologie delle pubblicazioni",
+        required=False)
+
+
+class IRerPubblicazioniSettings(IRerPubblicazioniLingueSettings,
+                                IRerPubblicazioniTipologieSettings):
     """
     Marker interface for settings
     """
@@ -29,10 +40,15 @@ class FormLingue(group.Group):
     fields = field.Fields(IRerPubblicazioniLingueSettings)
 
 
+class FormTipologie(group.Group):
+    label = u"Tipologie"
+    fields = field.Fields(IRerPubblicazioniTipologieSettings)
+
+
 class RerPubblicazioniSettingsEditForm(RegistryEditForm):
 
     schema = IRerPubblicazioniSettings
-    # groups = (FormLingue, )
+    groups = (FormLingue, FormTipologie)
     label = u"Configurazione Pubblicazioni"
 
 

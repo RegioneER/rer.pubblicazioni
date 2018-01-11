@@ -38,5 +38,10 @@
     name="rer.pubblicazioni.lingue"
     />
 
+  <utility
+    factory=".vocabularies.Tipologie"
+    name="rer.pubblicazioni.tipologie"
+    />
+
 
 </configure>

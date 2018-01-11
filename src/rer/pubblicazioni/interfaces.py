@@ -34,13 +34,18 @@ class IPubblicazione(Interface):
     )
 
     # TODO - schema.List
-    publicationType = schema.Text(
+    publicationType = schema.List(
         title=_(u'rer_publication_type', default=u'Type - TODO'),
         description=_(
             u'help_rer_publication_type',
             default=u'Insert a list of types for this publication'
         ),
         required=False,
+        default=[],
+        missing_value=[],
+        value_type=schema.Choice(
+            vocabulary='rer.pubblicazioni.tipologie'
+        )
     )
 
     publicationLanguage = schema.Choice(
@@ -55,7 +60,7 @@ class IPubblicazione(Interface):
     )
 
     # "Pubblicato in" - era "Collana"
-    publicationSeries = schema.Text(
+    publicationSeries = schema.TextLine(
         title=_(u'rer_publication_series', default=u'Series - TODO'),
         description=_(
             u'help_rer_publication_series',
