@@ -31,7 +31,8 @@ class IRerPubblicazioniTipologieSettings(model.Schema):
 class IRerPubblicazioniSettings(IRerPubblicazioniLingueSettings,
                                 IRerPubblicazioniTipologieSettings):
     """
-    Marker interface for settings
+    Marker interface for settings.
+    It's this class that is registered in registry.xml.
     """
 
 
