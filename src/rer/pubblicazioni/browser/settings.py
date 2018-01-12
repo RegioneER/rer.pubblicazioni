@@ -54,4 +54,6 @@ class RerPubblicazioniSettingsEditForm(RegistryEditForm):
 
 
 class RerPubblicazioniSettingsView(ControlPanelFormWrapper):
+    """ This is the actual view that get called in the control panel.
+    """
     form = RerPubblicazioniSettingsEditForm
