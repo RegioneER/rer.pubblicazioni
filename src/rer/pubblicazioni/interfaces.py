@@ -51,9 +51,8 @@ class IPubblicazione(Interface):
         required=True,
     )
 
-    # TODO - schema.List
     publicationType = schema.List(
-        title=_(u'rer_publication_type', default=u'Type - TODO'),
+        title=_(u'rer_publication_type', default=u'Type'),
         description=_(
             u'help_rer_publication_type',
             default=u'Insert a list of types for this publication'
@@ -79,7 +78,7 @@ class IPubblicazione(Interface):
 
     # "Pubblicato in" - era "Collana"
     publicationSeries = schema.Text(
-        title=_(u'rer_publication_series', default=u'Series'),
+        title=_(u'rer_published_in', default=u'Published in'),
         description=_(
             u'help_rer_publication_series',
             default=u''

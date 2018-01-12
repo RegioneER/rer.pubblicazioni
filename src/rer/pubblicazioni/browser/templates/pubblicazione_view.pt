@@ -4,8 +4,109 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     lang="en"
     metal:use-macro="context/main_template/macros/master"
-    i18n:domain="plone">
+    i18n:domain="rer.pubblicazioni">
 <body>
+
+  <metal:content-core fill-slot="content-core">
+  <metal:block define-macro="content-core">
+    <div class="publicationWrapper">
+
+      <div class="abstractwrapper" tal:condition="context/abstract">
+        <p class="item-label">
+          <strong i18n:translate="rer_description_abstract">Abstract</strong>:
+          <span class="item-value" tal:content="structure context/abstract/output | nothing">
+            Abstract
+          </span>
+        </p>
+      </div>
+
+      <div class="authorWrapper" tal:condition="context/publicationAuthor">
+        <p class="item-label">
+          <strong i18n:translate="rer_pub_author_tags">Author/Authors</strong>:
+        </p>
+        <tal:author tal:repeat="author context/publicationAuthor">
+          <p class="item-value"
+             tal:content="author"> Author name </p>
+        </tal:author>
+      </div>
+
+      <div class="publicationdatewrapper" tal:condition="context/publicationDate">
+        <p class="item-label">
+          <strong i18n:translate="rer_publication_date">Publication date</strong>:
+          <span class="item-value" tal:content="context/publicationDate | nothing">
+            date
+          </span>
+        </p>
+      </div>
+
+      <div class="publicationtypeewrapper" tal:condition="context/publicationType">
+        <p class="item-label">
+          <strong i18n:translate="rer_publication_type"> Publication type</strong>:
+        </p>
+        <tal:author tal:repeat="type context/publicationType">
+          <p class="item-value"
+             tal:content="type"> Type </p>
+        </tal:author>
+      </div>
+
+      <div class="publicationlanguageewrapper" tal:condition="context/publicationLanguage">
+        <p class="item-label">
+          <strong i18n:translate="rer_publication_language">Language</strong>:
+        </p>
+        <span class="item-value" tal:content="context/publicationLanguage">
+          lang
+        </span>
+      </div>
+
+      <div class="publicationseriesewrapper" tal:condition="context/publicationSeries">
+        <p class="item-label">
+          <strong i18n:translate="rer_published_in">Published in</strong>:
+          <span class="item-value" tal:content="context/publicationSeries">
+            series
+          </span>
+        </p>
+      </div>
+
+      <div class="publicationeditorewrapper" tal:condition="context/publicationEditor">
+        <p class="item-label">
+          <strong i18n:translate="rer_publication_editor">Editor</strong>:
+          <span class="item-value" tal:content="context/publicationEditor">
+            editor
+          </span>
+        </p>
+      </div>
+
+      <div class="publicationrightsewrapper" tal:condition="context/publicationRights">
+        <p class="item-label">
+          <strong i18n:translate="rer_publication_rights">Rights</strong>:
+          <span class="item-value" tal:content="context/publicationRights">
+            Rights
+          </span>
+        </p>
+      </div>
+
+      <div class="urlwrapper" tal:condition="context/publicationURL">
+        <p class="item-label">
+          <strong i18n:translate="rer_publication_url">URL</strong>:
+          <span class="item-value" tal:content="structure context/publicationURL/output | nothing">
+            URL
+          </span>
+        </p>
+      </div>
+
+      <div class="filewrapper" tal:condition="context/publicationFile">
+        <p class="item-label" tal:define="file nocall:context/publicationFile">
+          <strong i18n:translate="rer_publication_url">Scarica la pubblicazione</strong>:
+          <a tal:attributes="href string:${context/absolute_url}/@@download/publicationFile/${context/publicationFile/filename}"> download </a>
+        </p>
+      </div>
+
+
+
+    </div>
+
+  </metal:block>
+  </metal:content-core>
 
 
 </body>
