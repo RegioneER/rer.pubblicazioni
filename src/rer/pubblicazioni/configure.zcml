@@ -43,5 +43,13 @@
     name="rer.pubblicazioni.tipologie"
     />
 
+  <utility
+    component=".vocabularies.KeywordsVocabularyFactory"
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="rer.pubblicazioni.autori"
+    />
+
+  <!-- INDEXER -->
+  <adapter name="Autori" factory=".indexers.author_indexer" />
 
 </configure>

@@ -2,9 +2,11 @@
 """Module where all interfaces, events and exceptions live."""
 
 from plone.app.textfield import RichText
+from plone.app.z3cform.widget import AjaxSelectFieldWidget
+from plone.autoform import directives
+from plone.namedfile.field import NamedFile
 from rer.pubblicazioni import _
 from zope import schema
-from plone.namedfile.field import NamedFile
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 
@@ -22,6 +24,22 @@ class IPubblicazione(Interface):
             default=u'An abstract of the publication.'
         ),
         required=False,
+    )
+
+    publicationAuthor = schema.Tuple(
+        title=_(u'rer_pub_author_tags', default=u'Author/authors'),
+        description=_(
+            u'help_rer_pub_author_tags',
+            default=u'Autore/autori della pubblicazione',
+        ),
+        value_type=schema.TextLine(),
+        required=False,
+        missing_value=(),
+    )
+    directives.widget(
+        'publicationAuthor',
+        AjaxSelectFieldWidget,
+        vocabulary='rer.pubblicazioni.autori'
     )
 
     publicationDate = schema.Date(
@@ -60,8 +78,8 @@ class IPubblicazione(Interface):
     )
 
     # "Pubblicato in" - era "Collana"
-    publicationSeries = schema.TextLine(
-        title=_(u'rer_publication_series', default=u'Series - TODO'),
+    publicationSeries = schema.Text(
+        title=_(u'rer_publication_series', default=u'Series'),
         description=_(
             u'help_rer_publication_series',
             default=u''
@@ -78,7 +96,7 @@ class IPubblicazione(Interface):
         required=False,
     )
 
-    publicationRights = RichText(
+    publicationRights = schema.Text(
         title=_(u'rer_publication_rights', default=u'Copyrights'),
         description=_(
             u'help_rer_rer_publication_rights',
@@ -96,7 +114,7 @@ class IPubblicazione(Interface):
         required=False,
     )
 
-    publicationURL = schema.Text(
+    publicationURL = RichText(
         title=_(u'rer_publication_url', default=u'URL'),
         description=_(
             u'help_rer_publication_url',
