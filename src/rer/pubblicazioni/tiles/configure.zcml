@@ -1,0 +1,36 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="rer.pubblicazioni">
+
+  <plone:tile
+      name="rer.pubblicazioni.search"
+      title="Ricerca pubblicazioni"
+      class=".search_pubblicazioni.SearchPubblicazioni"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      add_permission="cmf.ModifyPortalContent"
+      permission="zope2.View"
+      template="templates/search_pubblicazioni.pt"
+      />
+
+  <browser:page
+      name="pubblicazioni_collection_renderer"
+      class=".pubblicazioni_collection_renderer.PubblicazioniCollectionRenderer"
+      permission="zope2.View"
+      for="*"
+      layer="rer.pubblicazioni.interfaces.IRerPubblicazioniLayer"
+      template="templates/pubblicazioni_tile.pt"
+      />
+
+  <browser:page
+      name="pubblicazioni_utils_view"
+      class=".pubblicazioni_collection_renderer.HelpersView"
+      permission="zope2.View"
+      for="*"
+      layer="rer.pubblicazioni.interfaces.IRerPubblicazioniLayer"
+      />
+
+
+</configure>

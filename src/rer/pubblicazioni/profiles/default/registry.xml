@@ -2,5 +2,9 @@
 <registry>
 
   <records interface="rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings" />
-
+  <record name="plone.app.tiles">
+    <value purge="false">
+      <element>rer.pubblicazioni.search</element>
+    </value>
+  </record>
 </registry>

@@ -47,4 +47,16 @@
       title="Pubblicazione - view"
       />
 
+  <browser:page
+      name="pubblicazioni_collection_view"
+      for="plone.app.contenttypes.interfaces.ICollection"
+      class=".views.PubblicazioniCollectionView"
+      template="templates/pubblicazioni_collection_view.pt"
+      layer="rer.pubblicazioni.interfaces.IRerPubblicazioniLayer"
+      permission="zope2.View"
+      menu="plone_displayviews"
+      title="Archivio pubblicazioni"
+      />
+
 </configure>
+

@@ -1,0 +1,6 @@
+<tal:field tal:replace="structure view/form_instance/widgets/text/@@ploneform-render-widget" />
+<tal:field tal:replace="structure view/form_instance/widgets/publicationAuthor/@@ploneform-render-widget" />
+<tal:field tal:replace="structure view/form_instance/widgets/publicationTypes/@@ploneform-render-widget" />
+<tal:field tal:replace="structure view/form_instance/widgets/publicationLanguage/@@ploneform-render-widget" />
+<tal:field tal:replace="structure view/form_instance/widgets/publicationDateFrom/@@ploneform-render-widget" />
+<tal:field tal:replace="structure view/form_instance/widgets/publicationDateTo/@@ploneform-render-widget" />
