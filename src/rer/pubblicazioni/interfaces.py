@@ -113,11 +113,12 @@ class IPubblicazione(Interface):
         required=False,
     )
 
-    publicationURL = RichText(
+    publicationURL = schema.TextLine(
         title=_(u'rer_publication_url', default=u'URL'),
         description=_(
             u'help_rer_publication_url',
             default=u''
         ),
+        default=u"http://",
         required=False,
     )
