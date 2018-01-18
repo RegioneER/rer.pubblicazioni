@@ -67,7 +67,7 @@
                   <div class="publicationDateAuthor" tal:condition="python:publication_author or publication_date or publication_type">
                       <p tal:condition="publication_author" class="publicationAuthor"> 
                           <tal:authors repeat="author publication_author">
-                              <a href="${context/portal_url}/@@search?Autori=${author}" tal:content="author">Author</a>
+                              <a href="${context/portal_url}/@@search?authors=${author}" target="_blank" tal:content="author">Author</a>
                               <tal:comma tal:condition="not:repeat/author/end">, </tal:comma>
                           </tal:authors>
                       </p>
