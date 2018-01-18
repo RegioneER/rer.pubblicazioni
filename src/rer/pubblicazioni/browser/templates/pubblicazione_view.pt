@@ -16,7 +16,7 @@
 
       <div class="abstractwrapper" tal:condition="context/abstract">
         <p class="item-label">
-          <strong i18n:translate="rer_description_abstract">Abstract</strong>:
+          <strong i18n:translate="rer_description_abstract">Description/Abstract</strong>:
           <span class="item-value" tal:content="structure context/abstract/output | nothing">
             Abstract
           </span>
@@ -41,7 +41,7 @@
       <div class="publicationdatewrapper" tal:condition="context/publicationDate">
         <p class="item-label">
           <strong i18n:translate="rer_publication_date">Publication date</strong>:
-          <span class="item-value" tal:content="context/publicationDate | nothing">
+          <span class="item-value" tal:content="python:view.toLocalizedTime(context.publicationDate) or ''">
             date
           </span>
         </p>
@@ -86,7 +86,7 @@
 
       <div class="publicationrightsewrapper" tal:condition="context/publicationRights">
         <p class="item-label">
-          <strong i18n:translate="rer_publication_rights">Rights</strong>:
+          <strong i18n:translate="rer_publication_rights">Copyrights</strong>:
           <span class="item-value" tal:content="context/publicationRights">
             Rights
           </span>
@@ -104,7 +104,7 @@
 
       <div class="filewrapper" tal:condition="context/publicationFile">
         <p class="item-label" tal:define="file nocall:context/publicationFile">
-          <strong i18n:translate="rer_publication_url">Scarica la pubblicazione</strong>:
+          <strong i18n:translate="rer_publication_download">Scarica la pubblicazione</strong>:
           <a tal:attributes="href string:${context/absolute_url}/@@download/publicationFile/${context/publicationFile/filename}"> download </a>
         </p>
       </div>

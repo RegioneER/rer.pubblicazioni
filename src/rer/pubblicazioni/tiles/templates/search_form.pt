@@ -1,6 +1,22 @@
-<tal:field tal:replace="structure view/form_instance/widgets/text/@@ploneform-render-widget" />
-<tal:field tal:replace="structure view/form_instance/widgets/publicationAuthor/@@ploneform-render-widget" />
-<tal:field tal:replace="structure view/form_instance/widgets/publicationTypes/@@ploneform-render-widget" />
-<tal:field tal:replace="structure view/form_instance/widgets/publicationLanguage/@@ploneform-render-widget" />
-<tal:field tal:replace="structure view/form_instance/widgets/publicationDateFrom/@@ploneform-render-widget" />
-<tal:field tal:replace="structure view/form_instance/widgets/publicationDateTo/@@ploneform-render-widget" />
+<form class="rowlike enableUnloadProtection search-pubblicazioni" 
+      action="." 
+      method="get"
+      tal:attributes="action view/form_instance/action|request/getURL">
+    <div class="fort-fields"
+         tal:define="widgets view/form_instance/widgets">
+        <tal:field tal:replace="structure widgets/text/@@ploneform-render-widget" />
+        <tal:field tal:replace="structure widgets/publicationAuthor/@@ploneform-render-widget" />
+        <tal:field tal:replace="structure widgets/publicationTypes/@@ploneform-render-widget" />
+        <tal:field tal:replace="structure widgets/publicationLanguage/@@ploneform-render-widget" />
+        <div class="dates" tal:attributes="data-error-message view/get_error_message">
+            <tal:field tal:replace="structure widgets/publicationDateFrom/@@ploneform-render-widget" />
+            <tal:field tal:replace="structure widgets/publicationDateTo/@@ploneform-render-widget" />
+        </div>
+            <tal:field tal:replace="structure widgets/portal_type/@@ploneform-render-widget" />
+    </div>
+    <div class="formControls" tal:condition="view/form_instance/actions/values">
+        <tal:block repeat="action view/form_instance/actions/values">
+            <input type="submit" tal:replace="structure action/render" />
+        </tal:block>
+    </div>
+</form>

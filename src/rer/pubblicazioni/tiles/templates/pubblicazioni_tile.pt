@@ -61,7 +61,7 @@
                                   </tal:authors>
                               </p>
                               <p class="publicationDate" tal:content="python:utils_view.toLocalizedTime(publication_date)" tal:condition="publication_date"/>
-                              <p class="publicationTypes" tal:content="python:', '.join(publication_type)" tal:condition="publication_type">
+                              <p class="publicationTypes" tal:content="python:', '.join(publication_type)" tal:condition="publication_type" />
                           </div>
                       </div>
                   </div>

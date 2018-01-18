@@ -27,7 +27,7 @@ class IPubblicazione(Interface):
     )
 
     publicationAuthor = schema.Tuple(
-        title=_(u'rer_pub_author_tags', default=u'Author/authors'),
+        title=_(u'rer_pub_author_tags', default=u'Author/Authors'),
         description=_(
             u'help_rer_pub_author_tags',
             default=u'Autore/autori della pubblicazione',
@@ -43,7 +43,7 @@ class IPubblicazione(Interface):
     )
 
     publicationDate = schema.Date(
-        title=_(u'rer_publication_date', default=u'Date'),
+        title=_(u'rer_publication_date', default=u'Publication date'),
         description=_(
             u'help_rer_publication_date',
             default=u'Insert the date for this publication'
@@ -52,7 +52,7 @@ class IPubblicazione(Interface):
     )
 
     publicationType = schema.List(
-        title=_(u'rer_publication_type', default=u'Type'),
+        title=_(u'rer_publication_type', default=u'Publication type'),
         description=_(
             u'help_rer_publication_type',
             default=u'Insert a list of types for this publication'

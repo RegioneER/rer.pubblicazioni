@@ -126,3 +126,40 @@ class KeywordsVocabulary(object):
 
 
 KeywordsVocabularyFactory = KeywordsVocabulary()
+
+
+class BaseIndexValuesVocabulary(object):
+
+    def __call__(self, context):
+        pc = context.portal_catalog
+        values = pc.uniqueValuesFor(self.INDEX)
+        values = sorted(values)
+        terms = [SimpleTerm(title=value, value=value) for value in values]
+        return SimpleVocabulary(terms)
+
+
+@implementer(IVocabularyFactory)
+class PublicationUsedLanguagesVocabulary(BaseIndexValuesVocabulary):
+
+    INDEX = 'publication_language'
+
+
+PublicationUsedLanguagesVocabularyFactory = PublicationUsedLanguagesVocabulary()
+
+
+@implementer(IVocabularyFactory)
+class PublicationUsedAuthorsVocabulary(BaseIndexValuesVocabulary):
+
+    INDEX = 'authors'
+
+
+PublicationUsedAuthorsVocabularyFactory = PublicationUsedAuthorsVocabulary()
+
+
+@implementer(IVocabularyFactory)
+class PublicationUsedTypesVocabulary(BaseIndexValuesVocabulary):
+
+    INDEX = 'publication_types'
+
+
+PublicationUsedTypesVocabularyFactory = PublicationUsedTypesVocabulary()

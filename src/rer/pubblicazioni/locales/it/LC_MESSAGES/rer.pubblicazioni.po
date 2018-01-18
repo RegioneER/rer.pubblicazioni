@@ -1,6 +1,3 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -15,15 +12,15 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: rer.pubblicazioni\n"
+"Domain: DOMAIN\n"
 
 #: ../profiles/default/types/Pubblicazione.xml
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: ../tiles/search_pubblicazioni.py:122
 msgid "End date should be great than start date"
-msgstr ""
+msgstr "La data di fine della ricerca non deve essere minore della data di inizio"
 
 #: ../tiles/pubblicazioni_collection_renderer.py:17
 msgid "Layout pubblicazioni"
@@ -31,39 +28,39 @@ msgstr ""
 
 #: ../profiles/default/types/Pubblicazione.xml
 msgid "Pubblicazione"
-msgstr ""
+msgstr "Pubblicazione"
 
 #. Default: "Search"
 #: ../tiles/search_pubblicazioni.py:76
 msgid "Search"
-msgstr ""
+msgstr "Cerca"
 
 #: ../tiles/search_pubblicazioni.py:59
 msgid "Search for pubblications"
-msgstr ""
+msgstr "Cerca pubblicazioni"
 
 #: ../tiles/search_pubblicazioni.py:24
 msgid "Searchable Text"
-msgstr ""
+msgstr "Cerca nel testo"
 
 #: ../profiles/default/types/Pubblicazione.xml
 msgid "View"
-msgstr ""
+msgstr "Vista"
 
 #. Default: "An abstract of the publication."
 #: ../interfaces.py:22
 msgid "help_rer_description_abstract"
-msgstr ""
+msgstr "L'abstract della pubblicazione"
 
 #. Default: "Autore/autori della pubblicazione"
 #: ../interfaces.py:31
 msgid "help_rer_pub_author_tags"
-msgstr ""
+msgstr "L'autore o gli autori della pubblicazione"
 
 #. Default: "Insert the date for this publication"
 #: ../interfaces.py:47
 msgid "help_rer_publication_date"
-msgstr ""
+msgstr "La data della pubblicazione"
 
 #: ../interfaces.py:91
 msgid "help_rer_publication_editor"
@@ -76,7 +73,7 @@ msgstr ""
 #. Default: "Select the language of this publication"
 #: ../interfaces.py:70
 msgid "help_rer_publication_language"
-msgstr ""
+msgstr "La lingua della pubblicazione"
 
 #: ../interfaces.py:82
 msgid "help_rer_publication_series"
@@ -85,7 +82,7 @@ msgstr ""
 #. Default: "Insert a list of types for this publication"
 #: ../interfaces.py:56
 msgid "help_rer_publication_type"
-msgstr ""
+msgstr "Le tipologie della pubblicazione"
 
 #: ../interfaces.py:118
 msgid "help_rer_publication_url"
@@ -104,80 +101,80 @@ msgstr ""
 #: ../browser/templates/pubblicazione_view.pt:19
 #: ../interfaces.py:21
 msgid "rer_description_abstract"
-msgstr ""
+msgstr "Descrizione/Abstract"
 
 #. Default: "Author/Authors"
 #: ../browser/templates/pubblicazione_view.pt:28
 #: ../interfaces.py:30
 #: ../tiles/search_pubblicazioni.py:28
 msgid "rer_pub_author_tags"
-msgstr ""
+msgstr "Autore/Autori"
 
 #. Default: "Pubblication types"
 #: ../tiles/search_pubblicazioni.py:33
 msgid "rer_pub_type"
-msgstr ""
+msgstr "Tipo di pubblicazione"
 
 #. Default: "Publication date"
 #: ../browser/templates/pubblicazione_view.pt:43
 #: ../interfaces.py:46
 msgid "rer_publication_date"
-msgstr ""
+msgstr "Data di pubblicazione"
 
 #. Default: "From date"
 #: ../tiles/search_pubblicazioni.py:44
 msgid "rer_publication_date_from"
-msgstr ""
+msgstr "Pubblicato dalla data"
 
 #. Default: "To date"
 #: ../tiles/search_pubblicazioni.py:48
 msgid "rer_publication_date_to"
-msgstr ""
+msgstr "Pubblicato entro la data"
 
 #. Default: "Scarica la pubblicazione"
 #: ../browser/templates/pubblicazione_view.pt:107
 msgid "rer_publication_download"
-msgstr ""
+msgstr "Scarica la pubblicazione"
 
 #. Default: "Editor"
 #: ../browser/templates/pubblicazione_view.pt:80
 #: ../interfaces.py:90
 msgid "rer_publication_editor"
-msgstr ""
+msgstr "Editore"
 
 #. Default: "File"
 #: ../interfaces.py:108
 msgid "rer_publication_file"
-msgstr ""
+msgstr "File"
 
 #. Default: "Language"
 #: ../browser/templates/pubblicazione_view.pt:62
 #: ../interfaces.py:69
 #: ../tiles/search_pubblicazioni.py:39
 msgid "rer_publication_language"
-msgstr ""
+msgstr "Lingua della pubblicazione"
 
 #. Default: "Copyrights"
 #: ../browser/templates/pubblicazione_view.pt:89
 #: ../interfaces.py:99
 msgid "rer_publication_rights"
-msgstr ""
+msgstr "Diritti"
 
 #. Default: "Publication type"
 #: ../browser/templates/pubblicazione_view.pt:52
 #: ../interfaces.py:55
 msgid "rer_publication_type"
-msgstr ""
+msgstr "Tipo di pubblicazione"
 
 #. Default: "URL"
 #: ../browser/templates/pubblicazione_view.pt:98
 #: ../interfaces.py:117
 msgid "rer_publication_url"
-msgstr ""
+msgstr "URL"
 
 #. Default: "Published in"
 #: ../browser/templates/pubblicazione_view.pt:71
 #: ../interfaces.py:81
 msgid "rer_published_in"
-msgstr ""
+msgstr "Pubblicato in"
 

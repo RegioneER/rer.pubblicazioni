@@ -7,4 +7,21 @@
       <element>rer.pubblicazioni.search</element>
     </value>
   </record>
+  <records prefix="plone.resources/rerpubblicazioni"
+           interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+    <value key="js">++plone++rer.pubblicazioni/rerpubblicazioni.js</value>
+  </records>
+  <records prefix="plone.bundles/rerpubblicazionibundle"
+           interface='Products.CMFPlone.interfaces.IBundleRegistry'>
+    <value key="resources" purge="false">
+      <element>rerpubblicazioni</element>
+    </value>
+    <value key="enabled">True</value>
+    <value key="jscompilation">++plone++rer.pubblicazioni/rerpubblicazionibundle.js</value>
+    <value key="last_compilation">2019-11-26 00:00:00</value>
+    <value key="compile">True</value>
+    <value key="depends">plone</value>
+  </records>
+
+
 </registry>

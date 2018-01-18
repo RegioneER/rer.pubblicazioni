@@ -45,12 +45,33 @@
     />
 
   <utility
-    component=".vocabularies.KeywordsVocabularyFactory"
+    component=".vocabularies.PublicationUsedAuthorsVocabularyFactory"
     provides="zope.schema.interfaces.IVocabularyFactory"
     name="rer.pubblicazioni.autori"
     />
 
+  <utility
+    component=".vocabularies.PublicationUsedAuthorsVocabularyFactory"
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="rer.pubblicazioni.used_authors"
+    />
+
+  <utility
+    component=".vocabularies.PublicationUsedTypesVocabularyFactory"
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="rer.pubblicazioni.used_types"
+    />
+
+  <utility
+    component=".vocabularies.PublicationUsedLanguagesVocabularyFactory"
+    provides="zope.schema.interfaces.IVocabularyFactory"
+    name="rer.pubblicazioni.used_languages"
+    />
   <!-- INDEXER -->
-  <adapter name="Autori" factory=".indexers.author_indexer" />
+  <adapter name="authors" factory=".indexers.author_indexer" />
+  <adapter name="publication_types" factory=".indexers.publication_types_indexer" />
+  <adapter name="publication_language" factory=".indexers.publication_language_indexer" />
+  <adapter name="publication_date" factory=".indexers.publication_date_indexer" />
+  <adapter name="SearchableText" factory=".indexers.publication_searchable_text" />
 
 </configure>

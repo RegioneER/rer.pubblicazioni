@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 # from zope.interface import implements
-from z3c.form import field
+from z3c.form import field, button
 from plone.tiles import Tile
 from zope.interface import Interface
-from plone.autoform import directives
+# from plone.autoform import directives
 from plone.z3cform.layout import FormWrapper
-from plone.app.z3cform.widget import AjaxSelectFieldWidget, AjaxSelectWidget
+# from plone.app.z3cform.widget import AjaxSelectFieldWidget, AjaxSelectWidget
 from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone.utils import get_top_request
-from Products.CMFPlone.resources import add_resource_on_request
+# from Products.CMFPlone.utils import get_top_request
+# from Products.CMFPlone.resources import add_resource_on_request
 from z3c.form.form import Form
 from rer.pubblicazioni import _
 from zope import schema
+from plone import api
+from z3c.form.interfaces import HIDDEN_MODE
 
 
 class ISearchForm(Interface):
@@ -20,33 +22,21 @@ class ISearchForm(Interface):
         required=False,
         title=_('Searchable Text')
     )
-    publicationAuthor = schema.Tuple(
-        title=_(u'rer_pub_author_tags', default=u'Author/authors'),
-        value_type=schema.TextLine(),
+    publicationAuthor = schema.Choice(
         required=False,
-        missing_value=(),
+        title=_(u'rer_pub_author_tags', default=u'Author/Authors'),
+        vocabulary="rer.pubblicazioni.used_authors"
     )
-    directives.widget(
-        'publicationAuthor',
-        AjaxSelectFieldWidget,
-        vocabulary='rer.pubblicazioni.autori'
-    )
-    publicationTypes = schema.Tuple(
+    publicationTypes = schema.Choice(
+        required=False,
         title=_(u'rer_pub_type', default=u'Pubblication types'),
-        value_type=schema.TextLine(),
-        required=False,
-        missing_value=(),
-    )
-    directives.widget(
-        'publicationTypes',
-        AjaxSelectFieldWidget,
-        vocabulary='rer.pubblicazioni.tipologie'
+        vocabulary="rer.pubblicazioni.used_types"
     )
 
     publicationLanguage = schema.Choice(
         required=False,
         title=_(u'rer_publication_language', default=u'Language'),
-        vocabulary="rer.pubblicazioni.lingue"
+        vocabulary="rer.pubblicazioni.used_languages"
     )
     publicationDateFrom = schema.Date(
         required=False,
@@ -55,6 +45,10 @@ class ISearchForm(Interface):
     publicationDateTo = schema.Date(
         required=False,
         title=_(u'rer_publication_date_to', default=u'To date'),
+    )
+    portal_type = schema.TextLine(
+        required=True,
+        title=_(u'portal_type', default=u'Portal type')
     )
 
 
@@ -65,15 +59,42 @@ class SearchForm(Form):
     ignoreContext = True
 
     def updateWidgets(self):
-        self.fields['publicationAuthor'].widgetFactory = AjaxSelectFieldWidget
-        self.fields['publicationTypes'].widgetFactory = AjaxSelectFieldWidget
+        # self.fields['publicationAuthor'].widgetFactory = AjaxSelectFieldWidget
+        # self.fields['publicationTypes'].widgetFactory = AjaxSelectFieldWidget
         super(SearchForm, self).updateWidgets()
+        self.widgets['text'].name = 'SearchableText'
+        self.widgets['publicationAuthor'].name = 'authors'
+        self.widgets['publicationTypes'].name = 'publication_types'
+        self.widgets['publicationLanguage'].name = 'publication_language'
+        self.widgets['publicationDateFrom'].name = 'start'
+        self.widgets['publicationDateTo'].name = 'end'
+        self.widgets['portal_type'].name = 'portal_type'
+        self.widgets['portal_type'].value = 'Pubblicazione'
+        self.widgets['portal_type'].mode = HIDDEN_MODE
+
+    @button.buttonAndHandler(_(u'Search', default='Search'))
+    def handleApply(self, action):
+        data, errors = self.extractData()
+
+        if errors:
+            return
+
+    @property
+    def action(self):
+        baseurl = "/@@search?portal_type=Pubblicazione"
+        portalurl = api.portal.get().absolute_url()
+        return portalurl + baseurl
 
 
 class TileFormViewer(FormWrapper):
 
     form = SearchForm
     index = ViewPageTemplateFile("templates/search_form.pt")
+
+    def get_error_message(self):
+        return self.context.translate(
+            _(u'End date should be great than start date')
+        )
 
 
 class SearchPubblicazioni(Tile):
@@ -87,8 +108,8 @@ class SearchPubblicazioni(Tile):
         self.form_wrapper = self.create_form()
 
     def __call__(self):
-        top_request = get_top_request(self.request)
-        add_resource_on_request(top_request, 'select2')
+        # top_request = get_top_request(self.request)
+        # add_resource_on_request(top_request, 'select2')
         return super(SearchPubblicazioni, self).__call__()
 
     def create_form(self):
