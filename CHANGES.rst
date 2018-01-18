@@ -6,4 +6,4 @@ Changelog
 ------------------
 
 - Initial release.
-  [arsenico13]
+  [arsenico13, lucabel]
