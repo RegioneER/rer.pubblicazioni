@@ -51,8 +51,8 @@ class Tipologie(object):
                 title=u'-- aggiungi tipologie dal pannello di controllo --',
                 value='')]
             return terms
-        terms = [SimpleTerm(title=value,
-                            value=value)
+        terms = [SimpleTerm(title=value.encode('utf-8'),
+                            value=value.encode('utf-8'))
                  for value in
                  view.extract_value_from_settings('tipologie').split('\r\n')
                  ]

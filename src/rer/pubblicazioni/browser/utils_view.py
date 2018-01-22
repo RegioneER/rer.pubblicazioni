@@ -29,4 +29,4 @@ class RerPubblicazioniUtilsView(BrowserView):
             return ""
         if not value:
             return ""
-        return value.encode('utf-8')
+        return value

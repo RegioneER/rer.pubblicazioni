@@ -4,7 +4,7 @@
 from plone.app.textfield import RichText
 from plone.app.z3cform.widget import AjaxSelectFieldWidget
 from plone.autoform import directives
-from plone.namedfile.field import NamedFile
+from plone.namedfile.field import NamedBlobFile
 from rer.pubblicazioni import _
 from zope import schema
 from zope.interface import Interface
@@ -104,7 +104,7 @@ class IPubblicazione(Interface):
         required=False,
     )
 
-    publicationFile = NamedFile(
+    publicationFile = NamedBlobFile(
         title=_(u'rer_publication_file', default=u'File'),
         description=_(
             u'help_rer_publication_file',
