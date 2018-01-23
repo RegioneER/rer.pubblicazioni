@@ -176,5 +176,5 @@ msgstr "URL"
 #: ../browser/templates/pubblicazione_view.pt:71
 #: ../interfaces.py:81
 msgid "rer_published_in"
-msgstr "Pubblicato in"
+msgstr "Collana/Pubblicato in"
 
