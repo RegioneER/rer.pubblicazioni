@@ -119,6 +119,6 @@ class IPubblicazione(Interface):
             u'help_rer_publication_url',
             default=u''
         ),
-        default=u"http://",
+        default=u"",
         required=False,
     )

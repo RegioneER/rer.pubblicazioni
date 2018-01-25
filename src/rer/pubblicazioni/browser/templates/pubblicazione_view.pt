@@ -93,7 +93,7 @@
         </p>
       </div>
 
-      <div class="urlwrapper" tal:condition="python: context.publicationURL != 'http://'">
+      <div class="urlwrapper" tal:condition="python: context.publicationURL != 'http://' and context.publicationURL">
         <p class="item-label">
           <strong i18n:translate="rer_publication_url">URL</strong>:
           <span class="item-value" tal:content="structure context/publicationURL | nothing">
