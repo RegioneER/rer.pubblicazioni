@@ -134,7 +134,7 @@ class BaseIndexValuesVocabulary(object):
         pc = context.portal_catalog
         values = pc.uniqueValuesFor(self.INDEX)
         values = sorted(values)
-        terms = [SimpleTerm(title=value, value=value) for value in values]
+        terms = [SimpleTerm(title=value.encode('utf-8'), value=value.encode('utf-8')) for value in values]
         return SimpleVocabulary(terms)
 
 
