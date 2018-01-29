@@ -12,6 +12,7 @@ from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 from zope.site.hooks import getSite
+from plone import api
 
 
 @implementer(IVocabularyFactory)
