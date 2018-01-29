@@ -3,7 +3,7 @@ require([
 ], function($){
   'use strict';
 
-    var setup_rer_pubblicazioni_search_form = function( ){
+    function setup_rer_pubblicazioni_search_form(){
         $(document).on('click', '.search-pubblicazioni input[type=submit]', function (e) {
             e.preventDefault();
             var $form = $(e.target).parents('form');
@@ -51,6 +51,12 @@ require([
         });
     };
 
+    // $(document).on('rtTilesLoaded', '.pat-tiles-management .tilesList .search-pubblicazioni', function(e) {
+    //     debugger;
+    //     $('#form-widgets-publicationAuthor').select2();
+    //     $('#form-widgets-publicationTypes').select2();
+    //     $('#form-widgets-publicationLanguage').select2();
+    // });
     $(document).ready(function(){
         setup_rer_pubblicazioni_search_form();
     });
