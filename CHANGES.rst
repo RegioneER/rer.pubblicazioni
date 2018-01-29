@@ -3,8 +3,8 @@ Changelog
 
 2.0.0 (unreleased)
 ------------------
-- Prepared for production
-  [daniele]
+- Prepared for production.
+  [arsenico13, lucabel, daniele]
 
 1.0a1 (unreleased)
 ------------------
