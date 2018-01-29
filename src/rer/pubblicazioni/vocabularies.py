@@ -131,7 +131,9 @@ KeywordsVocabularyFactory = KeywordsVocabulary()
 class BaseIndexValuesVocabulary(object):
 
     def __call__(self, context):
-        pc = context.portal_catalog
+	portal = api.portal.get()
+        pc = getToolByName(portal, 'portal_catalog')
+		
         values = pc.uniqueValuesFor(self.INDEX)
         values = sorted(values)
         terms = [SimpleTerm(title=value.encode('utf-8'), value=value.encode('utf-8')) for value in values if value]
