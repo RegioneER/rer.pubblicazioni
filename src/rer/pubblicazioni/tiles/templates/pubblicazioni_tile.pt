@@ -26,42 +26,52 @@
               <div class="tileContent" tal:condition="results">
                 <tal:results tal:repeat="obj results">
                   <div tal:define="oddrow repeat/obj/odd;
-                                  publication python: obj.getObject();
-                                  useView python:obj.portal_type in viewActions;
-                                  itemUrl python:useView and obj.getURL() + '/view' or obj.getURL();
-                                  item_wf_state obj/review_state;
-                                  item_title obj/title;
-                                  item_wf_state_class python:'state-' + plone_view.normalizeString(item_wf_state);
-                                  item_type obj/portal_type;
-                                  item_type_class python:'contenttype-' + plone_view.normalizeString(item_type);
-                                  item_has_image python:obj.image;
-                                  image_scale portal/@@image_scale;
-                                  publication_author obj/publicationAuthor|nothing;
-                                  publication_date obj/publicationDate|nothing;
-                                  publication_type obj/publicationType|nothing;"
-                      tal:attributes="class python: 'colonna-1-di-4 ' + (oddrow and 'collectionItem even' or 'collectionItem odd')">
+                                   publication python: obj.getObject();
+                                   useView python:obj.portal_type in viewActions;
+                                   itemUrl python:useView and obj.getURL() + '/view' or obj.getURL();
+                                   item_wf_state obj/review_state;
+                                   item_title obj/title;
+                                   item_wf_state_class python:'state-' + plone_view.normalizeString(item_wf_state);
+                                   item_type obj/portal_type;
+                                   item_type_class python:'contenttype-' + plone_view.normalizeString(item_type);
+                                   item_has_image python:obj.image;
+                                   image_scale portal/@@image_scale;
+                                   publication_author obj/publicationAuthor|nothing;
+                                   publication_date obj/publicationDate|nothing;
+                                   publication_type obj/publicationType|nothing;"
+                       tal:attributes="class python: 'colonna-1-di-4 ' + (oddrow and 'collectionItem even' or 'collectionItem odd')">
                       <div class="collectionItemWrapper">
-                          <header metal:define-macro="listitem">
-                              <span class="summary" tal:attributes="title item_type">
-                                  <a tal:attributes="href itemUrl; class string:clearfix"
-                                     tal:condition="python: item_has_image and thumb_scale_list">
-                                      <img tal:replace="structure python:image_scale.tag(obj, 'image', scale=thumb_scale_list, css_class=img_class)" />
+                          <div class="entry" metal:define-macro="listitem">
+                              <div class="summary">
+                                  <a tal:attributes="href itemUrl; title item_type">
+                                      <div class="item-image"
+                                           tal:condition="python: item_has_image and thumb_scale_list">
+                                          <img tal:replace="structure python:image_scale.tag(obj, 'image', scale='newshome', css_class=img_class)" />
+                                      </div>
+                                      <div tal:attributes="class string:$item_type_class $item_wf_state_class item-title">
+                                          <span tal:content="item_title">Item Title</span>
+                                      </div>
                                   </a>
-                                  <a tal:attributes="href itemUrl;
-                                                      class string:$item_type_class $item_wf_state_class url;
-                                                      title item_type" tal:content="item_title">Item Title
-                                  </a>
-                              </span>
-                          </header>
-                          <div class="publicationDateAuthor" tal:condition="python:publication_author or publication_date or publication_type">
-                              <p tal:condition="publication_author" class="publicationAuthor">
-                                  <tal:authors repeat="author publication_author">
-                                      <a href="${context/portal_url}/@@search?Autori=${author}" tal:content="author">Author</a>
-                                      <tal:comma tal:condition="not:repeat/author/end">, </tal:comma>
-                                  </tal:authors>
-                              </p>
-                              <p class="publicationDate" tal:content="python:utils_view.toLocalizedTime(publication_date)" tal:condition="publication_date"/>
-                              <p class="publicationTypes" tal:content="python:', '.join(publication_type)" tal:condition="publication_type" />
+                              </div>
+                              <div class="publicationDateAuthor" tal:condition="python:publication_author or publication_date or publication_type">
+                                  <div class="publicationAuthor" tal:condition="publication_author">
+                                      <span class="publication-label">Autore:</span>
+                                      <div class="publication-content">
+                                          <tal:authors repeat="author publication_author">
+                                              <a href="${context/portal_url}/@@search?authors=${author}" target="_blank"><span tal:content="author">Author</span></a>
+                                          <tal:comma tal:condition="not:repeat/author/end">, </tal:comma>
+                                          </tal:authors>
+                                      </div>
+                                  </div>
+                                  <div class="publicationDate" tal:condition="publication_date">
+                                      <span class="publication-label">Data:</span>
+                                      <span class="publication-content">${publication_date}</span>
+                                  </div>
+                                  <div class="publicationTypes" tal:condition="publication_type">
+                                      <span class="publication-label">Tipo:</span>
+                                      <span class="publication-content" tal:content="python:', '.join(publication_type)" />
+                                  </div>
+                              </div>
                           </div>
                       </div>
                   </div>
@@ -69,7 +79,7 @@
               </div>
               <div class="showMore" tal:condition="view/data/show_more">
                 <a href="${collection/absolute_url}"
-                  tal:define="show_more_label view/data/show_more_label|nothing">
+                   tal:define="show_more_label view/data/show_more_label|nothing">
                   <span tal:condition="not:show_more_label"
                         i18n:translate="more_url">More&hellip;</span>
                   <span tal:condition="show_more_label">${show_more_label}</span>
