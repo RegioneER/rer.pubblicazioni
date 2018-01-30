@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-01-18 13:20+0000\n"
+"POT-Creation-Date: 2018-01-30 11:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,34 +14,58 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
+#: ../browser/configure.zcml:59
+msgid "Archivio pubblicazioni"
+msgstr ""
+
 #: ../profiles/default/types/Pubblicazione.xml
 msgid "Edit"
 msgstr "Edit"
 
-#: ../tiles/search_pubblicazioni.py:122
+#: ../tiles/search_pubblicazioni.py:96
 msgid "End date should be great than start date"
 msgstr "La data di fine della ricerca non deve essere minore della data di inizio"
 
+#: ../configure.zcml:21
+msgid "Installs the rer.pubblicazioni add-on."
+msgstr ""
+
 #: ../tiles/pubblicazioni_collection_renderer.py:17
 msgid "Layout pubblicazioni"
+msgstr ""
+
+#: ../tiles/configure.zcml:17
+msgid "Mostra il form per la ricerca delle pubblicazioni"
 msgstr ""
 
 #: ../profiles/default/types/Pubblicazione.xml
 msgid "Pubblicazione"
 msgstr "Pubblicazione"
 
+#: ../browser/configure.zcml:48
+msgid "Pubblicazione - view"
+msgstr ""
+
+#: ../tiles/configure.zcml:17
+msgid "Ricerca pubblicazioni"
+msgstr ""
+
 #. Default: "Search"
-#: ../tiles/search_pubblicazioni.py:76
+#: ../tiles/search_pubblicazioni.py:75
 msgid "Search"
 msgstr "Cerca"
 
-#: ../tiles/search_pubblicazioni.py:59
+#: ../tiles/search_pubblicazioni.py:58
 msgid "Search for pubblications"
 msgstr "Cerca pubblicazioni"
 
-#: ../tiles/search_pubblicazioni.py:24
+#: ../tiles/search_pubblicazioni.py:23
 msgid "Searchable Text"
 msgstr "Cerca nel testo"
+
+#: ../configure.zcml:30
+msgid "Uninstalls the rer.pubblicazioni add-on."
+msgstr ""
 
 #: ../profiles/default/types/Pubblicazione.xml
 msgid "View"
@@ -93,8 +117,21 @@ msgid "help_rer_rer_publication_rights"
 msgstr ""
 
 #. Default: "Portal type"
-#: ../tiles/search_pubblicazioni.py:52
+#: ../tiles/search_pubblicazioni.py:51
 msgid "portal_type"
+msgstr ""
+
+#. Default: "Data pubblicazione"
+#: ../profiles/default/registry.xml
+msgid "publication_date"
+msgstr ""
+
+#: ../configure.zcml:21
+msgid "rer.pubblicazioni"
+msgstr ""
+
+#: ../configure.zcml:30
+msgid "rer.pubblicazioni (uninstall)"
 msgstr ""
 
 #. Default: "Description/Abstract"
@@ -106,12 +143,12 @@ msgstr "Descrizione/Abstract"
 #. Default: "Author/Authors"
 #: ../browser/templates/pubblicazione_view.pt:28
 #: ../interfaces.py:30
-#: ../tiles/search_pubblicazioni.py:28
+#: ../tiles/search_pubblicazioni.py:27
 msgid "rer_pub_author_tags"
 msgstr "Autore/Autori"
 
 #. Default: "Pubblication types"
-#: ../tiles/search_pubblicazioni.py:33
+#: ../tiles/search_pubblicazioni.py:32
 msgid "rer_pub_type"
 msgstr "Tipo di pubblicazione"
 
@@ -122,19 +159,19 @@ msgid "rer_publication_date"
 msgstr "Data di pubblicazione"
 
 #. Default: "From date"
-#: ../tiles/search_pubblicazioni.py:44
+#: ../tiles/search_pubblicazioni.py:43
 msgid "rer_publication_date_from"
 msgstr "Pubblicato dalla data"
 
 #. Default: "To date"
-#: ../tiles/search_pubblicazioni.py:48
+#: ../tiles/search_pubblicazioni.py:47
 msgid "rer_publication_date_to"
 msgstr "Pubblicato entro la data"
 
 #. Default: "Scarica la pubblicazione"
-#: ../browser/templates/pubblicazione_view.pt:107
+#: ../browser/templates/pubblicazione_view.pt:109
 msgid "rer_publication_download"
-msgstr "Scarica la pubblicazione"
+msgstr ""
 
 #. Default: "Editor"
 #: ../browser/templates/pubblicazione_view.pt:80
@@ -150,7 +187,7 @@ msgstr "File"
 #. Default: "Language"
 #: ../browser/templates/pubblicazione_view.pt:62
 #: ../interfaces.py:69
-#: ../tiles/search_pubblicazioni.py:39
+#: ../tiles/search_pubblicazioni.py:38
 msgid "rer_publication_language"
 msgstr "Lingua della pubblicazione"
 
@@ -178,3 +215,7 @@ msgstr "URL"
 msgid "rer_published_in"
 msgstr "Collana/Pubblicato in"
 
+#. Default: "Ricerca pubblicazioni"
+#: ../tiles/templates/search_form.pt:6
+msgid "search-pubblicazioni-title"
+msgstr "Ricerca Pubblicazioni"
