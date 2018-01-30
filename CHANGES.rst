@@ -4,7 +4,7 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Templating and translations [nzambello]
 
 
 2.0.0 (2018-01-29)
