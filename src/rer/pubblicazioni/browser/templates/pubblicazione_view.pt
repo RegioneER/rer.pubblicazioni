@@ -29,10 +29,10 @@
         </p>
         <tal:author tal:repeat="author context/publicationAuthor">
           <p class="item-value">
-          <a href="${context/portal_url}/@@search?authors=${author}" 
+          <a href="${context/portal_url}/@@search?authors=${author}"
                  target="_blank"
                  tal:content="author">
-                  Author name 
+                  Author name
               </a>
           </p>
         </tal:author>
@@ -108,7 +108,7 @@
         <p class="item-label" tal:define="file nocall:context/publicationFile">
           <strong i18n:translate="rer_publication_download">Scarica la pubblicazione</strong>:
           <a tal:attributes="href string:${context/absolute_url}/@@download/publicationFile/${context/publicationFile/filename}"> download </a>
-	  <span class="file_info" tal:content="string: (${file_content_type}, ${file_size} MB)">
+          <span class="file_info" tal:content="string: (${file_content_type}, ${file_size} MB)"></span>
         </p>
 	</tal:fileinfo>
       </div>
