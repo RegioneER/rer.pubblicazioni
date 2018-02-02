@@ -39,7 +39,7 @@
                                    publication_author obj/publicationAuthor|nothing;
                                    publication_date obj/publicationDate|nothing;
                                    publication_type obj/publicationType|nothing;"
-                       tal:attributes="class python: 'colonna-1-di-4 ' + (oddrow and 'collectionItem even' or 'collectionItem odd')">
+                       tal:attributes="class python: 'colonna-1-di-3 ' + (oddrow and 'collectionItem even' or 'collectionItem odd')">
                       <div class="collectionItemWrapper">
                           <div class="entry" metal:define-macro="listitem">
                               <div class="summary">
