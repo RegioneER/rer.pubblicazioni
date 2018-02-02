@@ -50,18 +50,16 @@
                                          publication_type obj/publicationType|nothing;">
                     <metal:block define-slot="entry">
                       <div class="entry" metal:define-macro="listitem">
-                        <div class="publicationTitle">
+                        <div class="item-image"
+                             tal:condition="python: item_has_image and thumb_scale_list">
+                          <a tal:attributes="href item_link; title item_type">
+                            <img tal:replace="structure python:image_scale.tag(item, 'image', scale='newshome', css_class=img_class)" />
+                          </a>
+                        </div>
+                        <div class="publicationDetails">
                           <div tal:attributes="class string:$item_type_class $item_wf_state_class item-title">
                             <a tal:attributes="href item_link; title item_type">
                               <span tal:content="item_title">Item Title</span>
-                            </a>
-                          </div>
-                        </div>
-                        <div class="publicationDetails">
-                          <div class="item-image"
-                               tal:condition="python: item_has_image and thumb_scale_list">
-                            <a tal:attributes="href item_link; title item_type">
-                              <img tal:replace="structure python:image_scale.tag(item, 'image', scale='newshome', css_class=img_class)" />
                             </a>
                           </div>
                           <div class="publicationDateAuthor" tal:condition="python:publication_author or publication_date or publication_type">
