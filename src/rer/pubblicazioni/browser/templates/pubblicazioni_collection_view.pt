@@ -67,7 +67,7 @@
                               <span class="publication-label">Autore:</span>
                               <div class="publication-content">
                                 <tal:authors repeat="author publication_author">
-                                  <a href="${context/portal_url}/@@search?authors=${author}" target="_blank"><span tal:content="author">Author</span></a>
+                                  <a href="${context/portal_url}/@@search?authors=${author}"><span tal:content="author">Author</span></a>
                                   <tal:comma tal:condition="not:repeat/author/end">, </tal:comma>
                                 </tal:authors>
                               </div>

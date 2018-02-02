@@ -30,7 +30,6 @@
         <tal:author tal:repeat="author context/publicationAuthor">
           <p class="item-value">
           <a href="${context/portal_url}/@@search?authors=${author}"
-                 target="_blank"
                  tal:content="author">
                   Author name
               </a>
