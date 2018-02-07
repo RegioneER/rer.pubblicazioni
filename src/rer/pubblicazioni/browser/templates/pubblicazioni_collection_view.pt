@@ -59,7 +59,7 @@
                         <div class="publicationDetails">
                           <div tal:attributes="class string:$item_type_class $item_wf_state_class item-title">
                             <a tal:attributes="href item_link; title item_type">
-                              <span tal:content="item_title">Item Title</span>
+                              <h2><span tal:content="item_title">Item Title</span></h2>
                             </a>
                           </div>
                           <div class="publicationDateAuthor" tal:condition="python:publication_author or publication_date or publication_type">

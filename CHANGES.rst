@@ -4,7 +4,7 @@ Changelog
 2.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix headings in templates [nzambello]
 
 
 2.0.1 (2018-02-02)
