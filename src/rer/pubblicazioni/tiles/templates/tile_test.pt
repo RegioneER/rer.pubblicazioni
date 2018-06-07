@@ -11,7 +11,7 @@
         pubblicazioni nel caso in cui il form veniva generato autoamticamente.
         #14322
       </tal:comment>
-      <p> percorso: ${view/searchone} </p>
+      <p> percorso: ${view/get_search_path} </p>
       <p> Sarà none?: ${view/data} </p>
 
     <div class="tile-search-publications"
@@ -22,9 +22,8 @@
             <h3 i18n:translate="search-pubblicazioni-title">Search Publications</h3>
           </div>
           <form class="rowlike enableUnloadProtection search-pubblicazioni"
-                action="."
-                method="get"
-                tal:attributes="action view/form_instance/action|request/getURL">
+                action="${context/portal_url}/@@search"
+                method="get">
             <div class="form-fields">
 
               <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
@@ -67,7 +66,9 @@
                 <select id="form-widgets-publicationTypes" name="publication_types:list"
                         class="select-widget choice-field" size="1">
                   <option id="form-widgets-publicationTypes-novalue" value="--NOVALUE--">-</option>
-                  <option id="form-widgets-publicationTypes-0" value="Soft porn">Soft porn</option>
+                  <tal:option repeat="type view/get_publication_type">
+                    <option value="${type}">${type}</option>
+                  </tal:option>
                 </select>
                 <input name="publication_types-empty-marker" value="1" type="hidden">
               </div>
@@ -83,9 +84,9 @@
                 <select id="form-widgets-publicationLanguage" name="publication_language:list"
                         class="select-widget choice-field" size="1">
                   <option id="form-widgets-publicationLanguage-novalue" value="--NOVALUE--">-</option>
-                  <option id="form-widgets-publicationLanguage-0" value="Brusso">Brusso</option>
-                  <option id="form-widgets-publicationLanguage-1" value="Inglese">Inglese</option>
-                  <option id="form-widgets-publicationLanguage-2" value="Polvacco">Polvacco</option>
+                  <tal:option repeat="lang view/get_publication_language">
+                    <option value="${lang}">${lang}</option>
+                  </tal:option>
                 </select>
                 <input name="publication_language-empty-marker" value="1" type="hidden">
               </div>
@@ -106,30 +107,20 @@
                 </div>
               </div>
 
-              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
-                   class="field pat-inlinevalidation kssattr-fieldname-portal_type "
-                   data-fieldname="portal_type" id="formfield-form-widgets-portal_type">
-                <div class="fieldErrorBox"></div>
                 <input id="form-widgets-portal_type" name="portal_type"
                        value="Pubblicazione" class="hidden-widget" type="hidden">
-              </div>
 
-              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
-                   class="field pat-inlinevalidation kssattr-fieldname-search_path empty "
-                   data-fieldname="search_path" id="formfield-form-widgets-search_path">
-                <div class="fieldErrorBox"></div>
-                <input id="form-widgets-search_path" name="search_path"
-                       value="/portale/normale" class="hidden-widget" type="hidden">
-              </div>
+                <input id="form-widgets-ciccino" name="ciccino"
+                       value="Ciccino" class="hidden-widget" type="hidden">
 
+                <input id="form-widgets-path" name="path"
+                       value="${view/get_search_path}" class="hidden-widget" type="hidden">
             </div>
 
             <div class="formControls">
-
               <input id="form-buttons-search" name="form.buttons.search"
                      class="submit-widget button-field" value="Cerca"
                      type="submit">
-
             </div>
           </form>
         </div>
