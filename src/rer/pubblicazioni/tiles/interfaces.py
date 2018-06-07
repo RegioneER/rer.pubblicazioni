@@ -38,11 +38,6 @@ class ITileDiProva(model.Schema):
     """ interfaccia della tile di prova - cancellare
     """
 
-    searchone_path = schema.TextLine(
-        required=False,
-        title=_(u'path', default=u'/')
-    )
-
     search_path = schema.Choice(
         title=_(
             'searchpub_tile_folderuid',
