@@ -16,6 +16,8 @@ from plone import api
 from z3c.form.interfaces import HIDDEN_MODE
 from plone.app.vocabularies.catalog import CatalogSource
 from plone.app.uuid.utils import uuidToObject
+from zope.component import getUtility
+from zope.schema.interfaces import IVocabularyFactory
 
 
 class ISearchForm(Interface):
@@ -151,8 +153,11 @@ class TileDiProva(Tile):
             return ""
 
     def get_authors(self):
-        import pdb; pdb.set_trace()
-        return []
+        factory = getUtility(
+            IVocabularyFactory,
+            'rer.pubblicazioni.used_authors')
+        vocabulary = factory(self.context)
+        return vocabulary
 
     def get_publication_type(self):
         values = api.portal.get_registry_record('rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.tipologie')  # noqa

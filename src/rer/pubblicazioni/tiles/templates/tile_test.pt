@@ -49,7 +49,9 @@
                 <select id="form-widgets-publicationAuthor" name="authors:list"
                         class="select-widget choice-field" size="1">
                   <option id="form-widgets-publicationAuthor-novalue" value="--NOVALUE--">-</option>
-                  <option id="form-widgets-publicationAuthor-0" value="Tua Madre">Tua Madre</option>
+                  <tal:option repeat="autore view/get_authors">
+                    <option value="${autore/value}">${autore/value}</option>
+                  </tal:option>
                 </select>
                 <input name="authors-empty-marker" value="1" type="hidden">
               </div>
