@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en"
+      lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal">
+    <body>
+      <tal:comment condition="nothing">
+        Disegnamo in maniera totalmente manuale il form perchè abbiamo notato
+        enormi problemi nel recuperare i dati del path in cui cercare le
+        pubblicazioni nel caso in cui il form veniva generato autoamticamente.
+        #14322
+      </tal:comment>
+      <p> percorso: ${view/searchone} </p>
+      <p> Sarà none?: ${view/data} </p>
+
+    <div class="tile-search-publications"
+         i18n:domain="rer.pubblicazioni">
+      <div class="tile-container">
+        <div class="tile-wrapper">
+          <div class="tile-header">
+            <h3 i18n:translate="search-pubblicazioni-title">Search Publications</h3>
+          </div>
+          <form class="rowlike enableUnloadProtection search-pubblicazioni"
+                action="."
+                method="get"
+                tal:attributes="action view/form_instance/action|request/getURL">
+            <div class="form-fields">
+
+              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                   class="field pat-inlinevalidation kssattr-fieldname-SearchableText empty"
+                   data-fieldname="SearchableText" id="formfield-form-widgets-text">
+                <label for="form-widgets-text" class="horizontal">
+                  Cerca nel testo
+                </label>
+                <div class="fieldErrorBox"></div>
+                <input id="form-widgets-text"
+                       name="SearchableText"
+                       class="text-widget textline-field" value="" type="text">
+              </div>
+
+
+              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                   class="field pat-inlinevalidation kssattr-fieldname-authors"
+                   data-fieldname="authors" id="formfield-form-widgets-publicationAuthor">
+                <label for="form-widgets-publicationAuthor" class="horizontal">
+                  Autore/Autori
+                </label>
+                <div class="fieldErrorBox"></div>
+                <select id="form-widgets-publicationAuthor" name="authors:list"
+                        class="select-widget choice-field" size="1">
+                  <option id="form-widgets-publicationAuthor-novalue" value="--NOVALUE--">-</option>
+                  <option id="form-widgets-publicationAuthor-0" value="Tua Madre">Tua Madre</option>
+                </select>
+                <input name="authors-empty-marker" value="1" type="hidden">
+              </div>
+
+
+              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                   class="field pat-inlinevalidation kssattr-fieldname-publication_types"
+                   data-fieldname="publication_types" id="formfield-form-widgets-publicationTypes">
+                <label for="form-widgets-publicationTypes" class="horizontal">
+                  Tipo di pubblicazione
+                </label>
+
+                <div class="fieldErrorBox"></div>
+                <select id="form-widgets-publicationTypes" name="publication_types:list"
+                        class="select-widget choice-field" size="1">
+                  <option id="form-widgets-publicationTypes-novalue" value="--NOVALUE--">-</option>
+                  <option id="form-widgets-publicationTypes-0" value="Soft porn">Soft porn</option>
+                </select>
+                <input name="publication_types-empty-marker" value="1" type="hidden">
+              </div>
+
+
+              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                   class="field pat-inlinevalidation kssattr-fieldname-publication_language"
+                   data-fieldname="publication_language" id="formfield-form-widgets-publicationLanguage">
+                <label for="form-widgets-publicationLanguage" class="horizontal">
+                Lingua della pubblicazione
+                </label>
+                <div class="fieldErrorBox"></div>
+                <select id="form-widgets-publicationLanguage" name="publication_language:list"
+                        class="select-widget choice-field" size="1">
+                  <option id="form-widgets-publicationLanguage-novalue" value="--NOVALUE--">-</option>
+                  <option id="form-widgets-publicationLanguage-0" value="Brusso">Brusso</option>
+                  <option id="form-widgets-publicationLanguage-1" value="Inglese">Inglese</option>
+                  <option id="form-widgets-publicationLanguage-2" value="Polvacco">Polvacco</option>
+                </select>
+                <input name="publication_language-empty-marker" value="1" type="hidden">
+              </div>
+
+              <div class="dates">
+                <div id="form-widgets-publicationDateFrom">
+                  <label for="form-widgets-publicationDateFrom" class="horizontal">
+                    Pubblicato dalla data
+                  </label>
+                  <input class="pat-pickadate" data-pat-pickadate="time:false"/>
+                </div>
+
+                <div id="formfield-form-widgets-publicationDateTo">
+                  <label for="formfield-form-widgets-publicationDateTo" class="horizontal">
+                    Pubblicato dalla data
+                  </label>
+                  <input class="pat-pickadate" data-pat-pickadate="time:false"/>
+                </div>
+              </div>
+
+              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                   class="field pat-inlinevalidation kssattr-fieldname-portal_type "
+                   data-fieldname="portal_type" id="formfield-form-widgets-portal_type">
+                <div class="fieldErrorBox"></div>
+                <input id="form-widgets-portal_type" name="portal_type"
+                       value="Pubblicazione" class="hidden-widget" type="hidden">
+              </div>
+
+              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                   class="field pat-inlinevalidation kssattr-fieldname-search_path empty "
+                   data-fieldname="search_path" id="formfield-form-widgets-search_path">
+                <div class="fieldErrorBox"></div>
+                <input id="form-widgets-search_path" name="search_path"
+                       value="/portale/normale" class="hidden-widget" type="hidden">
+              </div>
+
+            </div>
+
+            <div class="formControls">
+
+              <input id="form-buttons-search" name="form.buttons.search"
+                     class="submit-widget button-field" value="Cerca"
+                     type="submit">
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    </body>
+</html>
