@@ -20,6 +20,7 @@
             <tal:field tal:replace="structure widgets/publicationDateTo/@@ploneform-render-widget" />
           </div>
           <tal:field tal:replace="structure widgets/portal_type/@@ploneform-render-widget" />
+          <tal:field tal:replace="structure widgets/search_path/@@ploneform-render-widget" />
         </div>
         <div class="formControls" tal:condition="view/form_instance/actions/values">
           <tal:block repeat="action view/form_instance/actions/values">

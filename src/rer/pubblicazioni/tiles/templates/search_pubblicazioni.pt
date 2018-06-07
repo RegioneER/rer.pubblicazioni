@@ -5,6 +5,8 @@
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal">
     <body>
+      <p> percorso: ${view/searchone} </p>
+      <p> Sarà none?: ${view/data} </p>
         <form tal:replace="structure view/form_wrapper" />
     </body>
 </html>

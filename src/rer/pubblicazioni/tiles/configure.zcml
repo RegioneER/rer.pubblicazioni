@@ -17,6 +17,18 @@
       template="templates/search_pubblicazioni.pt"
       />
 
+  <plone:tile
+      name="rer.pubblicazioni.testtile"
+      title="Tile di Prova"
+      description='Mostra una tile di prova'
+      class=".search_pubblicazioni.TileDiProva"
+      schema=".interfaces.ITileDiProva"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      add_permission="cmf.ModifyPortalContent"
+      permission="zope2.View"
+      template="templates/tile_test.pt"
+      />
+
   <browser:page
       name="pubblicazioni_collection_renderer"
       class=".pubblicazioni_collection_renderer.PubblicazioniCollectionRenderer"

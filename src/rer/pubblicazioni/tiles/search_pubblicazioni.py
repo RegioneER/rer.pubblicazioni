@@ -14,6 +14,8 @@ from rer.pubblicazioni import _
 from zope import schema
 from plone import api
 from z3c.form.interfaces import HIDDEN_MODE
+from plone.app.vocabularies.catalog import CatalogSource
+from plone.app.uuid.utils import uuidToObject
 
 
 class ISearchForm(Interface):
@@ -51,6 +53,11 @@ class ISearchForm(Interface):
         title=_(u'portal_type', default=u'Portal type')
     )
 
+    search_path = schema.TextLine(
+        required=False,
+        title=_(u'search_path', default=u'/')
+    )
+
 
 class SearchForm(Form):
 
@@ -71,6 +78,12 @@ class SearchForm(Form):
         self.widgets['portal_type'].name = 'portal_type'
         self.widgets['portal_type'].value = 'Pubblicazione'
         self.widgets['portal_type'].mode = HIDDEN_MODE
+        self.widgets['search_path'].name = 'search_path'
+        # print "\n\n"
+        # print self.search_path
+        # print "\n\n"
+        # self.widgets['search_path'].value = 'Percorso'
+        self.widgets['search_path'].mode = HIDDEN_MODE
 
     @button.buttonAndHandler(_(u'Search', default='Search'))
     def handleApply(self, action):
@@ -107,17 +120,32 @@ class SearchPubblicazioni(Tile):
         self.request = request
         self.form_wrapper = self.create_form()
 
-    def __call__(self):
-        # top_request = get_top_request(self.request)
-        # add_resource_on_request(top_request, 'select2')
-        return super(SearchPubblicazioni, self).__call__()
-
     def create_form(self):
-
         context = self.context.aq_inner
         # reutrnURL = self.context.absolute_url()
         form = SearchForm(context, self.request)
+        form.search_path = self.data.get('search_path', '')
         view = TileFormViewer(context, self.request)
         view = view.__of__(context)
         view.form_instance = form
         return view
+
+    def searchone(self):
+        search_path = self.data.get('search_path', '')
+        if search_path:
+            return search_path
+
+
+class TileDiProva(Tile):
+    """
+    Nuova Tile per la ricerca di pubblicazioni nel sito
+    """
+
+    def searchone(self):
+        search_path = self.data.get('search_path', '')
+        # self.search_path = self.data.get('search_path', '')
+        obj = uuidToObject(self.data.get('search_path', ''))
+        self.path = '/'.join(obj.getPhysicalPath())
+        import pdb; pdb.set_trace()
+        if search_path:
+            return search_path
