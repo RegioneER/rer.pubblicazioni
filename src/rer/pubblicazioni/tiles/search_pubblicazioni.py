@@ -141,11 +141,29 @@ class TileDiProva(Tile):
     Nuova Tile per la ricerca di pubblicazioni nel sito
     """
 
-    def searchone(self):
-        search_path = self.data.get('search_path', '')
-        # self.search_path = self.data.get('search_path', '')
+    def get_search_path(self):
+        # search_path = self.data.get('path', '')
         obj = uuidToObject(self.data.get('search_path', ''))
-        self.path = '/'.join(obj.getPhysicalPath())
+        if obj:
+            path = '/'.join(obj.getPhysicalPath())
+            return path
+        else:
+            return ""
+
+    def get_authors(self):
         import pdb; pdb.set_trace()
-        if search_path:
-            return search_path
+        return []
+
+    def get_publication_type(self):
+        values = api.portal.get_registry_record('rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.tipologie')  # noqa
+        if values:
+            return values.split('\r\n')
+        else:
+            return []
+
+    def get_publication_language(self):
+        values = api.portal.get_registry_record('rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.lingue')  # noqa
+        if values:
+            return values.split('\r\n')
+        else:
+            return []
