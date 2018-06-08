@@ -4,7 +4,8 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
-- Added the path to search the publications in for the Search Tile.
+- Added the path to search the publications in for the Search Tile. There is an
+  upgrade step for this.
   [arsenico13]
 
 
