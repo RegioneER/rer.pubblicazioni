@@ -1,0 +1,15 @@
+<configure
+  xmlns="http://namespaces.zope.org/zope"
+  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+  i18n_domain="rer.pubblicazioni">
+
+  <genericsetup:upgradeStep
+    source="1000"
+    destination="1001"
+    profile="rer.pubblicazioni:default"
+    title="Import plone js registry"
+    description="Update js resources"
+    handler=".upgrades.import_js_registry"
+    />
+
+</configure>
