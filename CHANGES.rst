@@ -4,7 +4,8 @@ Changelog
 2.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added the path to search the publications in for the Search Tile.
+  [arsenico13]
 
 
 2.0.2 (2018-02-07)
