@@ -9,10 +9,11 @@
         Disegnamo in maniera totalmente manuale il form perchè abbiamo notato
         enormi problemi nel recuperare i dati del path in cui cercare le
         pubblicazioni nel caso in cui il form veniva generato autoamticamente.
-        #14322
+        #14322.
+
+        Attenzione: alla action di questo form c'è collegato rerpubblicazioni.js
+        che si mette in mezzo a fare cose.
       </tal:comment>
-      <p> percorso: ${view/get_search_path} </p>
-      <p> Sarà none?: ${view/data} </p>
 
     <div class="tile-search-publications"
          i18n:domain="rer.pubblicazioni">
@@ -53,7 +54,6 @@
                     <option value="${autore/value}">${autore/value}</option>
                   </tal:option>
                 </select>
-                <input name="authors-empty-marker" value="1" type="hidden">
               </div>
 
 
@@ -72,7 +72,6 @@
                     <option value="${type}">${type}</option>
                   </tal:option>
                 </select>
-                <input name="publication_types-empty-marker" value="1" type="hidden">
               </div>
 
 
@@ -90,7 +89,6 @@
                     <option value="${lang}">${lang}</option>
                   </tal:option>
                 </select>
-                <input name="publication_language-empty-marker" value="1" type="hidden">
               </div>
 
               <div class="dates">
@@ -98,14 +96,14 @@
                   <label for="form-widgets-publicationDateFrom" class="horizontal">
                     Pubblicato dalla data
                   </label>
-                  <input class="pat-pickadate" data-pat-pickadate="time:false"/>
+                  <input name="start" class="pat-pickadate" data-pat-pickadate="time:false"/>
                 </div>
 
                 <div id="formfield-form-widgets-publicationDateTo">
                   <label for="formfield-form-widgets-publicationDateTo" class="horizontal">
-                    Pubblicato dalla data
+                    Pubblicato entro la data
                   </label>
-                  <input class="pat-pickadate" data-pat-pickadate="time:false"/>
+                  <input name="end" class="pat-pickadate" data-pat-pickadate="time:false"/>
                 </div>
               </div>
 
