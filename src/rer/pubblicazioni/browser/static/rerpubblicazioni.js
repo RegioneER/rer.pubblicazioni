@@ -13,6 +13,7 @@ require([
             var plang = $form.find('[name=publication_language\\:list]').val();
             var pstart = $form.find('[name=start]').val();
             var pend = $form.find('[name=end]').val();
+            var path = $form.find('[name=path]').val()
 
             var querystring = '?portal_type=Pubblicazione'
             if (searchable){
@@ -32,6 +33,9 @@ require([
             }
             if (pend && !pstart){
                 querystring = querystring + '&publication_date.query:record:list:date=' + pend + '&publication_date.range:record=max';
+            }
+            if (path.length !== 0){
+                querystring = querystring + '&path=' + path;
             }
             $form.find('.error-message').remove();
             if (pstart && pend){
@@ -61,4 +65,3 @@ require([
         setup_rer_pubblicazioni_search_form();
     });
 });
-

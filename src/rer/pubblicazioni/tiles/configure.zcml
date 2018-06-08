@@ -10,10 +10,11 @@
       title="Ricerca pubblicazioni"
       description='Mostra il form per la ricerca delle pubblicazioni'
       class=".search_pubblicazioni.SearchPubblicazioni"
+      schema=".interfaces.ISearchPubblicazioniTile"
       for="plone.dexterity.interfaces.IDexterityContent"
       add_permission="cmf.ModifyPortalContent"
       permission="zope2.View"
-      template="templates/search_pubblicazioni.pt"
+      template="templates/search_pubblicazioni_tile.pt"
       />
 
   <browser:page
