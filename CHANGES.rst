@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.3 (unreleased)
+2.0.3 (2018-07-05)
 ------------------
 
 - Added the path to search the publications in for the Search Tile. There is an
