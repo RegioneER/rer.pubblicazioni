@@ -4,7 +4,9 @@ Changelog
 2.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix: The field publicationURL of a pubblication is now rendered as an 'a' tag
+  in the template (#16555)
+  [arsenico13]
 
 
 2.0.3 (2018-07-05)
