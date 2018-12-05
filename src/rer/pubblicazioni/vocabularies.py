@@ -69,7 +69,7 @@ class Tipologie(object):
 class KeywordsVocabulary(object):
     # Allow users to customize the index to easily create
     # KeywordVocabularies for other keyword indexes
-    keyword_index = 'Autori'
+    keyword_index = 'authors'
     path_index = 'path'
 
     def section(self, context):
@@ -131,13 +131,14 @@ KeywordsVocabularyFactory = KeywordsVocabulary()
 
 class BaseIndexValuesVocabulary(object):
 
-    def __call__(self, context):
+    def __call__(self, context, query=None):
         portal = api.portal.get()
         pc = getToolByName(portal, 'portal_catalog')
 
         values = pc.uniqueValuesFor(self.INDEX)
         values = sorted(values)
-        terms = [SimpleTerm(title=value.encode('utf-8'), value=value.encode('utf-8')) for value in values if value]
+        terms = [SimpleTerm(title=value.encode('utf-8'),
+                 value=value.encode('utf-8')) for value in values if value]
         return SimpleVocabulary(terms)
 
 

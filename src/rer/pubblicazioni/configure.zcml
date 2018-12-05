@@ -46,7 +46,7 @@
     />
 
   <utility
-    component=".vocabularies.PublicationUsedAuthorsVocabularyFactory"
+    component=".vocabularies.KeywordsVocabularyFactory"
     provides="zope.schema.interfaces.IVocabularyFactory"
     name="rer.pubblicazioni.autori"
     />
