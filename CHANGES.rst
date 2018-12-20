@@ -10,6 +10,9 @@ Changelog
 - Fix: Now the vocabulary for the authors of a pubblication is correct and
   filters the names while typing in the edit view (2.a of #16555)
   [arsenico13]
+- New: upgrade step that fixes authors field wrongly filled (with comma
+  separated names all in one piece) #16555
+  [arsenico13]
 
 
 2.0.3 (2018-07-05)
