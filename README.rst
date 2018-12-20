@@ -32,7 +32,7 @@ Translations
 
 This product has been translated into
 
-- Klingon (thanks, K'Plai)
+- Italiano
 
 
 Installation
@@ -58,14 +58,17 @@ Contribute
 - Source Code: https://github.com/PloneGov-IT/rer.pubblicazioni/
 
 
-Support
--------
-
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
-
-
 License
 -------
 
 The project is licensed under the GPLv2.
+
+
+Authors
+-------
+
+This product has been developed by the `RedTurtle Technology` team.
+
+.. image:: http://www.redturtle.it/redturtle_banner.png
+   :alt: RedTurtle Technology Site
+   :target: http://www.redturtle.it/
