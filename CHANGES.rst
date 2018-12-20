@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0.4 (unreleased)
+2.1.0 (unreleased)
 ------------------
 
 - Fix: The field publicationURL of a pubblication is now rendered as an 'a' tag
