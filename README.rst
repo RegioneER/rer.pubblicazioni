@@ -54,9 +54,8 @@ and then running ``bin/buildout``
 Contribute
 ----------
 
-- Issue Tracker: https://github.com/collective/rer.pubblicazioni/issues
-- Source Code: https://github.com/collective/rer.pubblicazioni
-- Documentation: https://docs.plone.org/foo/bar
+- Issue Tracker: https://github.com/PloneGov-IT/rer.pubblicazioni/issues
+- Source Code: https://github.com/PloneGov-IT/rer.pubblicazioni/
 
 
 Support
