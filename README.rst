@@ -69,6 +69,6 @@ Authors
 
 This product has been developed by the `RedTurtle Technology` team.
 
-.. image:: http://www.redturtle.it/redturtle_banner.png
+.. image:: https://www.redturtle.it/redturtle_banner.png
    :alt: RedTurtle Technology Site
    :target: http://www.redturtle.it/
