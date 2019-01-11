@@ -3,8 +3,10 @@
 from plone import api
 from plone.app.uuid.utils import uuidToObject
 from plone.tiles import Tile
+from Products.CMFCore import permissions
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleVocabulary
 
 
 class SearchPubblicazioni(Tile):
@@ -22,10 +24,39 @@ class SearchPubblicazioni(Tile):
             return ""
 
     def get_authors(self):
-        factory = getUtility(
-            IVocabularyFactory,
-            'rer.pubblicazioni.used_authors')
-        vocabulary = factory(self.context)
+        search_path = self.get_search_path()
+        portal_catalog = api.portal.get_tool('portal_catalog')
+        # api.user.has_permission(permissions.ModifyPortalContent, obj=self.context)  # noqa
+        # CHECK: va bene fare solo la separazione per gli anonimi o meglio
+        # scremare anche per permessi?
+        if api.user.is_anonymous():
+            # mostriamo solo le voci degli autori dei contenuti pubblicati
+            results = portal_catalog(
+                portal_type='Pubblicazione',
+                path=search_path,
+                review_state='published')
+        else:
+            results = portal_catalog(
+                portal_type='Pubblicazione',
+                path=search_path)
+
+        authors_options = []
+
+        for brain in results:
+            if brain.authors:
+                for author in brain.authors:
+                    authors_options.append(author)
+
+        sorted_set = sorted(set(authors_options))
+        terms = [SimpleVocabulary.createTerm(author, author, author) for author in sorted_set]  # noqa
+        vocabulary = SimpleVocabulary(terms)
+
+        # Vecchio funzionamento, dove venivamo mostrati tutti gli autori
+        # factory = getUtility(
+        #     IVocabularyFactory,
+        #     'rer.pubblicazioni.used_authors')
+        # vocabulary = factory(self.context)
+
         return vocabulary
 
     def get_publication_type(self):
