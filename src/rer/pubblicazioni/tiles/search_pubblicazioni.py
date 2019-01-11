@@ -47,7 +47,8 @@ class SearchPubblicazioni(Tile):
                 for author in brain.authors:
                     authors_options.append(author)
 
-        terms = [SimpleVocabulary.createTerm(author, author, author) for author in set(authors_options)]  # noqa
+        sorted_set = sorted(set(authors_options))
+        terms = [SimpleVocabulary.createTerm(author, author, author) for author in sorted_set]  # noqa
         vocabulary = SimpleVocabulary(terms)
 
         # Vecchio funzionamento, dove venivamo mostrati tutti gli autori
