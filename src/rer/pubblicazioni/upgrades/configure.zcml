@@ -21,4 +21,13 @@
     handler=".upgrades.fix_author_field"
     />
 
+  <genericsetup:upgradeStep
+    source="1002"
+    destination="1003"
+    profile="rer.pubblicazioni:default"
+    title="Add a metadata column for authors index"
+    description="Now you have 'authors' metadata in the brain."
+    handler=".upgrades.update_authors_metadata"
+    />
+
 </configure>

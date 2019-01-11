@@ -17,15 +17,57 @@ def import_registry(registry_id, dependencies=False):
 def import_js_registry(context):
     'Import js registry configuration'
     logger.info('Importing js registry configuration for ' +
-                'rer.agidtheme.base')
+                'rer.pubblicazioni')
     import_registry('jsregistry')
 
 
 def import_css_registry(context):
     'Import CSS registry configuration'
     logger.info('Importing CSS registry configuration for ' +
-                'rer.agidtheme.base')
+                'rer.pubblicazioni')
     import_registry('cssregistry')
+
+
+def import_catalog(context):
+    'Import CSS registry configuration'
+    logger.info('Importing catalog configuration for ' +
+                'rer.pubblicazioni')
+    import_registry('catalog')
+
+
+def update_authors_metadata(context):
+    """ With the version 1003, we add a new metadata column to the brain.
+    We update the catalog configuration and re-index all the pubblications.
+    """
+    pubs_changed = 0
+
+    logger.info('Update catalog configuration')
+    import_catalog(context)
+
+    logger.info("Now let's reindexing all the pubblications.")
+
+    site = api.portal.get()
+    logger.info(u"Getting all the pubblications objects in the site...")
+    pub_brains = site.portal_catalog.unrestrictedSearchResults(
+        portal_type=["Pubblicazione"],
+    )
+    logger.info(u"Found {} pubblications".format(len(pub_brains)))
+    for brain in pub_brains:
+        pube = brain.getObject()
+        pube.reindexObject(idxs=['authors'])
+
+        pubs_changed += 1
+
+        if pubs_changed > 10:
+            try:
+                print "Partial Commit..."
+                transaction.commit()
+                print "Partial Commit: OK"
+            except Exception as e:
+                logger.error(
+                    u"Error while committing transaction.")
+                logger.error(u"{}".format(e))
+            pubs_changed = 0
 
 
 def fix_author_field(context):

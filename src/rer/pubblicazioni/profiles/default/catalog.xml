@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <object name="portal_catalog" meta_type="Plone Catalog Tool">
-
   <index name="authors" meta_type="KeywordIndex">
     <indexed_attr value="authors"/>
   </index>
+  <column value="authors"/>
   <index name="publication_types" meta_type="KeywordIndex">
     <indexed_attr value="publication_types"/>
   </index>
