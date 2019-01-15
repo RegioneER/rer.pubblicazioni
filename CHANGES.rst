@@ -4,7 +4,10 @@ Changelog
 2.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- The tile "Ricerca Pubblicazioni" now behaves differently: the authors list
+  in the drop drown menu depends on the user (if it's logged in), on the path
+  set in the tile and if the publication is published or not #16555.
+  [arsenico13]
 
 
 2.1.0 (2018-12-28)
