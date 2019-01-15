@@ -60,7 +60,7 @@ def update_authors_metadata(context):
 
         if pubs_changed > 10:
             try:
-                print "Partial Commit..."
+                logger.info("Partial Commit...")
                 transaction.commit()
                 print "Partial Commit: OK"
             except Exception as e:
