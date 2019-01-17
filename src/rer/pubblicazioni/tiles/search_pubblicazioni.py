@@ -48,7 +48,7 @@ class SearchPubblicazioni(Tile):
                     authors_options.append(author)
 
         sorted_set = sorted(set(authors_options))
-        terms = [SimpleVocabulary.createTerm(author, author, author) for author in sorted_set]  # noqa
+        terms = [SimpleVocabulary.createTerm(author.encode('utf-8'), author.encode('utf-8'), author.encode('utf-8')) for author in sorted_set]  # noqa
         vocabulary = SimpleVocabulary(terms)
 
         # Vecchio funzionamento, dove venivamo mostrati tutti gli autori
