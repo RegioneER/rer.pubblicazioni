@@ -17,10 +17,10 @@ require([
 
             var querystring = '?portal_type=Pubblicazione'
             if (searchable){
-                querystring = querystring + '&SearchableText=' + escape(searchable);
+                querystring = querystring + '&SearchableText=' + encodeURI(searchable);
             }
             if (author !== '--NOVALUE--'){
-                querystring = querystring + '&authors=' + escape(author);
+                querystring = querystring + '&authors=' + encodeURI(author);
             }
             if (ptype !== '--NOVALUE--'){
                 querystring = querystring + '&publication_types=' + escape(ptype);
