@@ -8,6 +8,9 @@ Changelog
   in the drop drown menu depends on the user (if it's logged in), on the path
   set in the tile and if the publication is published or not #16555.
   [arsenico13]
+- Fix the url-encoding for the search-pubblications tile in the javascript
+  bundle (#16555)
+  [arsenico13]
 
 
 2.1.0 (2018-12-28)
