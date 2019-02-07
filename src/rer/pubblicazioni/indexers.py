@@ -14,23 +14,27 @@ def SearchableText(obj):
         textvalue = obj.abstract
         if IRichTextValue.providedBy(textvalue):
             transforms = getToolByName(obj, 'portal_transforms')
-            text = transforms.convertTo(
-                'text/plain',
-                safe_unicode(textvalue.raw).encode('utf-8'),
-                mimetype=textvalue.mimeType,
-            ).getData().strip()
+            text = (
+                transforms.convertTo(
+                    'text/plain',
+                    safe_unicode(textvalue.raw).encode('utf-8'),
+                    mimetype=textvalue.mimeType,
+                )
+                .getData()
+                .strip()
+            )
 
-    subject = u' '.join(
-        [safe_unicode(s) for s in obj.Subject()]
+    subject = u' '.join([safe_unicode(s) for s in obj.Subject()])
+
+    return u' '.join(
+        (
+            safe_unicode(obj.id),
+            safe_unicode(obj.title) or u'',
+            safe_unicode(obj.description) or u'',
+            safe_unicode(text),
+            safe_unicode(subject),
+        )
     )
-
-    return u' '.join((
-        safe_unicode(obj.id),
-        safe_unicode(obj.title) or u'',
-        safe_unicode(obj.description) or u'',
-        safe_unicode(text),
-        safe_unicode(subject),
-    ))
 
 
 @indexer(IPubblicazione)
@@ -38,7 +42,9 @@ def author_indexer(obj, **kw):
     """ Factory method per l'indicizzazione del campo autori di una
     pubblicazione.
     """
-    return obj.publicationAuthor
+    return map(
+        lambda x: x.encode('utf-8'), getattr(obj, 'publicationAuthor', ())
+    )
 
 
 @indexer(IPubblicazione)

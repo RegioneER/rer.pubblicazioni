@@ -11,7 +11,8 @@ Changelog
 - Fix the url-encoding for the search-pubblications tile in the javascript
   bundle (#16555)
   [arsenico13]
-
+- authors indexer now store values as strings and not unicode.
+  [cekk]
 
 2.1.0 (2018-12-28)
 ------------------
