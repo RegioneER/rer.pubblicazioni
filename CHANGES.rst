@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1.1 (unreleased)
+2.1.1 (2019-02-07)
 ------------------
 
 - The tile "Ricerca Pubblicazioni" now behaves differently: the authors list
