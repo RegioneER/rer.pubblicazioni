@@ -4,6 +4,7 @@ include *.rst
 include *.json
 exclude Gruntfile.js
 exclude LICENSE.GPL
+exclude .nvmrc
 exclude package.json
 exclude requirements.txt
 global-exclude *.pyc
