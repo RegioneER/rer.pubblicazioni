@@ -4,7 +4,8 @@ Changelog
 2.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added title and css fields to the tile interface.
+  [daniele]
 
 
 2.1.1 (2019-02-07)
