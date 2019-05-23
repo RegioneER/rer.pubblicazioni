@@ -10,6 +10,8 @@ class ISearchPubblicazioniTile(model.Schema):
     """ Interfaccia per la tile di ricerca pubblicazioni della RER.
     """
 
+    title = schema.TextLine(title=_(u'Title'), required=True, default=u'')
+
     search_path = schema.Choice(
         title=_(
             'searchpub_tile_folderuid',
@@ -21,3 +23,14 @@ class ISearchPubblicazioniTile(model.Schema):
         source=CatalogSource(portal_type=('Folder')),
         required=False,
     )
+
+    css_class = schema.TextLine(
+        title=_('search_publication_tile_css_class', u'CSS class'),
+        description=_(
+            'search_publication_tile_css_class_help',
+            u'Insert a list of additional css classes for this tile.',
+        ),
+        required=False,
+        default=u'',
+    )
+
