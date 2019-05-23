@@ -7,6 +7,7 @@ from Products.CMFCore import permissions
 from zope.component import getUtility
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
+from zope.schema.vocabulary import SimpleTerm
 
 
 class SearchPubblicazioni(Tile):
@@ -34,40 +35,53 @@ class SearchPubblicazioni(Tile):
             results = portal_catalog(
                 portal_type='Pubblicazione',
                 path=search_path,
-                review_state='published')
+                review_state='published',
+            )
         else:
             results = portal_catalog(
-                portal_type='Pubblicazione',
-                path=search_path)
+                portal_type='Pubblicazione', path=search_path
+            )
 
         authors_options = []
 
         for brain in results:
             if brain.authors:
                 for author in brain.authors:
-                    authors_options.append(author)
+                    if author not in authors_options:
+                        authors_options.append(author)
 
-        sorted_set = sorted(set(authors_options))
-        terms = [SimpleVocabulary.createTerm(author.encode('utf-8'), author.encode('utf-8'), author.encode('utf-8')) for author in sorted_set]  # noqa
+        # sorted_set = sorted(authors_options)
+        # terms = []
+        # for author in sorted(authors_options):
+        #     try:
+        #         terms.append(
+        #             SimpleTerm(title=author, token=author, value=author)
+        #         )
+        #     except Exception:
+        #         import pdb
+
+        #         pdb.set_trace()
+        terms = [
+            SimpleTerm(title=author, token=author, value=author)
+            for author in sorted(authors_options)
+        ]
         vocabulary = SimpleVocabulary(terms)
-
-        # Vecchio funzionamento, dove venivamo mostrati tutti gli autori
-        # factory = getUtility(
-        #     IVocabularyFactory,
-        #     'rer.pubblicazioni.used_authors')
-        # vocabulary = factory(self.context)
 
         return vocabulary
 
     def get_publication_type(self):
-        values = api.portal.get_registry_record('rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.tipologie')  # noqa
+        values = api.portal.get_registry_record(
+            'rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.tipologie'
+        )  # noqa
         if values:
             return values.split('\r\n')
         else:
             return []
 
     def get_publication_language(self):
-        values = api.portal.get_registry_record('rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.lingue')  # noqa
+        values = api.portal.get_registry_record(
+            'rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.lingue'
+        )  # noqa
         if values:
             return values.split('\r\n')
         else:

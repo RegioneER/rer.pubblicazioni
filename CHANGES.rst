@@ -4,7 +4,8 @@ Changelog
 2.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix unicode decode error
+  [cekk]
 
 
 2.1.1 (2019-02-07)
