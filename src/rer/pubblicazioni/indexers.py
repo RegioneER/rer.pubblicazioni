@@ -42,6 +42,8 @@ def author_indexer(obj, **kw):
     """ Factory method per l'indicizzazione del campo autori di una
     pubblicazione.
     """
+    if not getattr(obj, 'publicationAuthor', ()):
+        return
     return map(
         lambda x: x.encode('utf-8'), getattr(obj, 'publicationAuthor', ())
     )
