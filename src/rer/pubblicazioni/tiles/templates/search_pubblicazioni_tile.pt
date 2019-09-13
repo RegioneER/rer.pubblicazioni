@@ -19,19 +19,16 @@
          i18n:domain="rer.pubblicazioni">
       <div class="tile-container">
         <div class="tile-wrapper">
-          <div class="tile-header">
-            <h3 i18n:translate="search-pubblicazioni-title">Search Publications</h3>
-          </div>
           <form class="rowlike enableUnloadProtection search-pubblicazioni"
                 action="${context/portal_url}/@@search"
                 method="get">
             <div class="form-fields">
 
-              <div class="tileTitle">
-                  <h2 tal:define="title view/data/title|nothing;"
-                      class="tileTitle"
-                      tal:condition="title">${title}</h2>   
-              </div>
+              <h2 class="tileTitle">
+                  <span tal:define="title view/data/title|nothing;"
+                      class="ast_title"
+                      tal:condition="title">${title}</span>   
+              </h2>
 
               <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
                    class="field pat-inlinevalidation kssattr-fieldname-SearchableText empty"
