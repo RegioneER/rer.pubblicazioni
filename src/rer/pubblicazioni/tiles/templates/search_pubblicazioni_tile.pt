@@ -19,113 +19,116 @@
          i18n:domain="rer.pubblicazioni">
       <div class="tile-container">
         <div class="tile-wrapper">
-          <form class="rowlike enableUnloadProtection search-pubblicazioni"
-                action="${context/portal_url}/@@search"
-                method="get">
-            <div class="form-fields">
-
-              <h2 class="tileTitle">
-                  <span tal:define="title view/data/title|nothing;"
-                      class="ast_title"
-                      tal:condition="title">${title}</span>   
-              </h2>
-
-              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
-                   class="field pat-inlinevalidation kssattr-fieldname-SearchableText empty"
-                   data-fieldname="SearchableText" id="formfield-form-widgets-text">
-                <label for="form-widgets-text" class="horizontal">
-                  Cerca nel testo
-                </label>
-                <div class="fieldErrorBox"></div>
-                <input id="form-widgets-text"
-                       name="SearchableText"
-                       class="text-widget textline-field" value="" type="text">
-              </div>
+          <h2 class="tileTitle">
+            <span tal:define="title view/data/title|nothing;"
+                class="ast_title"
+                tal:condition="title">${title}</span>
+          </h2>
+          <div class="tileBody">
+            <form class="rowlike enableUnloadProtection search-pubblicazioni"
+                  action="${context/portal_url}/@@search"
+                  method="get">
+              <div class="form-fields">
 
 
-              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
-                   class="field pat-inlinevalidation kssattr-fieldname-authors"
-                   data-fieldname="authors" id="formfield-form-widgets-publicationAuthor">
-                <label for="form-widgets-publicationAuthor" class="horizontal">
-                  Autore/Autori
-                </label>
-                <div class="fieldErrorBox"></div>
-                <select id="form-widgets-publicationAuthor" name="authors:list"
-                        class="select-widget choice-field" size="1">
-                  <option id="form-widgets-publicationAuthor-novalue" value="--NOVALUE--">-</option>
-                  <tal:option repeat="autore view/get_authors">
-                    <option value="${autore/value}">${autore/value}</option>
-                  </tal:option>
-                </select>
-              </div>
 
-
-              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
-                   class="field pat-inlinevalidation kssattr-fieldname-publication_types"
-                   data-fieldname="publication_types" id="formfield-form-widgets-publicationTypes">
-                <label for="form-widgets-publicationTypes" class="horizontal">
-                  Tipo di pubblicazione
-                </label>
-
-                <div class="fieldErrorBox"></div>
-                <select id="form-widgets-publicationTypes" name="publication_types:list"
-                        class="select-widget choice-field" size="1">
-                  <option id="form-widgets-publicationTypes-novalue" value="--NOVALUE--">-</option>
-                  <tal:option repeat="type view/get_publication_type">
-                    <option value="${type}">${type}</option>
-                  </tal:option>
-                </select>
-              </div>
-
-
-              <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
-                   class="field pat-inlinevalidation kssattr-fieldname-publication_language"
-                   data-fieldname="publication_language" id="formfield-form-widgets-publicationLanguage">
-                <label for="form-widgets-publicationLanguage" class="horizontal">
-                Lingua della pubblicazione
-                </label>
-                <div class="fieldErrorBox"></div>
-                <select id="form-widgets-publicationLanguage" name="publication_language:list"
-                        class="select-widget choice-field" size="1">
-                  <option id="form-widgets-publicationLanguage-novalue" value="--NOVALUE--">-</option>
-                  <tal:option repeat="lang view/get_publication_language">
-                    <option value="${lang}">${lang}</option>
-                  </tal:option>
-                </select>
-              </div>
-
-              <div class="dates">
-                <div id="form-widgets-publicationDateFrom">
-                  <label for="form-widgets-publicationDateFrom" class="horizontal">
-                    Pubblicato dalla data
+                <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                    class="field pat-inlinevalidation kssattr-fieldname-SearchableText empty"
+                    data-fieldname="SearchableText" id="formfield-form-widgets-text">
+                  <label for="form-widgets-text" class="horizontal">
+                    Cerca nel testo
                   </label>
-                  <input name="start" class="pat-pickadate" data-pat-pickadate="time:false"/>
+                  <div class="fieldErrorBox"></div>
+                  <input id="form-widgets-text"
+                        name="SearchableText"
+                        class="text-widget textline-field" value="" type="text">
                 </div>
 
-                <div id="formfield-form-widgets-publicationDateTo">
-                  <label for="formfield-form-widgets-publicationDateTo" class="horizontal">
-                    Pubblicato entro la data
+
+                <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                    class="field pat-inlinevalidation kssattr-fieldname-authors"
+                    data-fieldname="authors" id="formfield-form-widgets-publicationAuthor">
+                  <label for="form-widgets-publicationAuthor" class="horizontal">
+                    Autore/Autori
                   </label>
-                  <input name="end" class="pat-pickadate" data-pat-pickadate="time:false"/>
+                  <div class="fieldErrorBox"></div>
+                  <select id="form-widgets-publicationAuthor" name="authors:list"
+                          class="select-widget choice-field" size="1">
+                    <option id="form-widgets-publicationAuthor-novalue" value="--NOVALUE--">-</option>
+                    <tal:option repeat="autore view/get_authors">
+                      <option value="${autore/value}">${autore/value}</option>
+                    </tal:option>
+                  </select>
                 </div>
-              </div>
+
+
+                <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                    class="field pat-inlinevalidation kssattr-fieldname-publication_types"
+                    data-fieldname="publication_types" id="formfield-form-widgets-publicationTypes">
+                  <label for="form-widgets-publicationTypes" class="horizontal">
+                    Tipo di pubblicazione
+                  </label>
+
+                  <div class="fieldErrorBox"></div>
+                  <select id="form-widgets-publicationTypes" name="publication_types:list"
+                          class="select-widget choice-field" size="1">
+                    <option id="form-widgets-publicationTypes-novalue" value="--NOVALUE--">-</option>
+                    <tal:option repeat="type view/get_publication_type">
+                      <option value="${type}">${type}</option>
+                    </tal:option>
+                  </select>
+                </div>
+
+
+                <div data-pat-inlinevalidation="{&quot;type&quot;:&quot;z3c.form&quot;}"
+                    class="field pat-inlinevalidation kssattr-fieldname-publication_language"
+                    data-fieldname="publication_language" id="formfield-form-widgets-publicationLanguage">
+                  <label for="form-widgets-publicationLanguage" class="horizontal">
+                  Lingua della pubblicazione
+                  </label>
+                  <div class="fieldErrorBox"></div>
+                  <select id="form-widgets-publicationLanguage" name="publication_language:list"
+                          class="select-widget choice-field" size="1">
+                    <option id="form-widgets-publicationLanguage-novalue" value="--NOVALUE--">-</option>
+                    <tal:option repeat="lang view/get_publication_language">
+                      <option value="${lang}">${lang}</option>
+                    </tal:option>
+                  </select>
+                </div>
+
+                <div class="dates">
+                  <div id="form-widgets-publicationDateFrom">
+                    <label for="form-widgets-publicationDateFrom" class="horizontal">
+                      Pubblicato dalla data
+                    </label>
+                    <input name="start" class="pat-pickadate" data-pat-pickadate="time:false"/>
+                  </div>
+
+                  <div id="formfield-form-widgets-publicationDateTo">
+                    <label for="formfield-form-widgets-publicationDateTo" class="horizontal">
+                      Pubblicato entro la data
+                    </label>
+                    <input name="end" class="pat-pickadate" data-pat-pickadate="time:false"/>
+                  </div>
+                </div>
 
                 <input id="form-widgets-portal_type" name="portal_type"
-                       value="Pubblicazione" class="hidden-widget" type="hidden">
+                        value="Pubblicazione" class="hidden-widget" type="hidden">
 
                 <input id="form-widgets-ciccino" name="ciccino"
-                       value="Ciccino" class="hidden-widget" type="hidden">
+                        value="Ciccino" class="hidden-widget" type="hidden">
 
                 <input id="form-widgets-path" name="path"
-                       value="${view/get_search_path}" class="hidden-widget" type="hidden">
-            </div>
+                        value="${view/get_search_path}" class="hidden-widget" type="hidden">
+              </div>
 
-            <div class="formControls">
-              <input id="form-buttons-search" name="form.buttons.search"
-                     class="submit-widget button-field" value="Cerca"
-                     type="submit">
-            </div>
-          </form>
+              <div class="formControls">
+                <input id="form-buttons-search" name="form.buttons.search"
+                      class="submit-widget button-field" value="Cerca"
+                      type="submit">
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </div>
