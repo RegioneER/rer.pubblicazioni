@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1.3 (unreleased)
+2.1.3 (2019-09-18)
 ------------------
 
 - Added title and css fields to the tile interface.
