@@ -6,6 +6,8 @@ Changelog
 
 - Added title and css fields to the tile interface.
   [daniele]
+- Added style collapsible for tile search pubblicazioni
+  [giuliaghisini]
 
 
 2.1.2 (2019-05-23)
