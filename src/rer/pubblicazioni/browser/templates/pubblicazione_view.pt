@@ -1,127 +1,122 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-    xmlns:tal="http://xml.zope.org/namespaces/tal"
-    xmlns:metal="http://xml.zope.org/namespaces/metal"
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    lang="en"
-    metal:use-macro="context/main_template/macros/master"
-    i18n:domain="rer.pubblicazioni">
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="rer.pubblicazioni">
 
-    <metal:css fill-slot="style_slot">
-      <link rel="stylesheet" type="text/css" href="${context/portal_url}/++plone++rer.pubblicazioni/css/pubblicazioni.css"></metal:css>
-<body>
+  <metal:css fill-slot="style_slot">
+    <link rel="stylesheet" type="text/css" href="${context/portal_url}/++plone++rer.pubblicazioni/css/pubblicazioni.css">
+  </metal:css>
 
-  <metal:content-core fill-slot="content-core">
-  <metal:block define-macro="content-core">
-    <div class="publicationWrapper">
+  <body>
 
-      <div class="abstractwrapper" tal:condition="context/abstract">
-        <p class="item-label">
-          <strong i18n:translate="rer_description_abstract">Description/Abstract</strong>:
-          <span class="item-value" tal:content="structure context/abstract/output | nothing">
-            Abstract
-          </span>
-        </p>
-      </div>
+    <metal:content-core fill-slot="content-core">
+      <metal:block define-macro="content-core">
+        <dl class="publicationWrapper">
 
-      <div class="authorWrapper" tal:condition="context/publicationAuthor">
-        <p class="item-label">
-          <strong i18n:translate="rer_pub_author_tags">Author/Authors</strong>:
-        </p>
-        <tal:author tal:repeat="author context/publicationAuthor">
-          <p class="item-value">
-          <a href="${context/portal_url}/@@search?authors=${author}"
-                 tal:content="author">
-                  Author name
-              </a>
-          </p>
-        </tal:author>
-      </div>
+          <div class="abstractwrapper publicationItem" tal:condition="context/abstract">
+            <dt id="abstract">
+              <strong i18n:translate="rer_description_abstract">Description/Abstract</strong>:
+            </dt>
+            <dd role="definition" labelledby="abstract">
+              <div tal:replace="structure context/abstract/output|nothing" />
+            </dd>
+          </div>
 
-      <div class="publicationdatewrapper" tal:condition="context/publicationDate">
-        <p class="item-label">
-          <strong i18n:translate="rer_publication_date">Publication date</strong>:
-          <span class="item-value" tal:content="python:view.toLocalizedTime(context.publicationDate) or ''">
-            date
-          </span>
-        </p>
-      </div>
+          <div class="authorWrapper publicationItem" tal:condition="context/publicationAuthor">
+            <dt id="author">
+              <strong i18n:translate="rer_pub_author_tags">Author/Authors</strong>:
+            </dt>
+            <tal:author tal:repeat="author context/publicationAuthor">
+              <dd role="definition" labelledby="author">
+                <a href="${context/portal_url}/@@search?authors=${author}">
+                  ${author}
+                </a>
+              </dd>
+            </tal:author>
+          </div>
 
-      <div class="publicationtypeewrapper" tal:condition="context/publicationType">
-        <p class="item-label">
-          <strong i18n:translate="rer_publication_type"> Publication type</strong>:
-        </p>
-        <tal:author tal:repeat="type context/publicationType">
-          <p class="item-value"
-             tal:content="type"> Type </p>
-        </tal:author>
-      </div>
+          <div class="publicationDateWrapper publicationItem" tal:condition="context/publicationDate">
+            <dt id="publicationdate">
+              <strong i18n:translate="rer_publication_date">Publication date</strong>:
+            </dt>
+            <dd role="definition" labelledby="publicationDate">
+              ${python: view.toLocalizedTime(context.publicationDate) or ''}
+            </dd>
+          </div>
 
-      <div class="publicationlanguageewrapper" tal:condition="context/publicationLanguage">
-        <p class="item-label">
-          <strong i18n:translate="rer_publication_language">Language</strong>:
-        </p>
-        <span class="item-value" tal:content="context/publicationLanguage">
-          lang
-        </span>
-      </div>
+          <div class="publicationTypeWrapper publicationItem" tal:condition="context/publicationType">
+            <dt id="publicationType">
+              <strong i18n:translate="rer_publication_type"> Publication type</strong>:
+            </dt>
+            <tal:author tal:repeat="type context/publicationType">
+              <dd role="definition" labelledby="publicationType">${type}</dd>
+            </tal:author>
+          </div>
 
-      <div class="publicationseriesewrapper" tal:condition="context/publicationSeries">
-        <p class="item-label">
-          <strong i18n:translate="rer_published_in">Published in</strong>:
-          <span class="item-value" tal:content="context/publicationSeries">
-            series
-          </span>
-        </p>
-      </div>
+          <div class="publicationLanguageWrapper publicationItem" tal:condition="context/publicationLanguage">
+            <dt id="publicationLanguage">
+              <strong i18n:translate="rer_publication_language">Language</strong>:
+            </dt>
+            <dd role="definition" labelledby="publicationLanguage">
+              ${context/publicationLanguage}
+            </dd>
+          </div>
 
-      <div class="publicationeditorewrapper" tal:condition="context/publicationEditor">
-        <p class="item-label">
-          <strong i18n:translate="rer_publication_editor">Editor</strong>:
-          <span class="item-value" tal:content="context/publicationEditor">
-            editor
-          </span>
-        </p>
-      </div>
+          <div class="publicationSeriesWrapper publicationItem" tal:condition="context/publicationSeries">
+            <dt id="publicationSeries">
+              <strong i18n:translate="rer_published_in">Published in</strong>:
+            </dt>
+            <dd role="definition" labelledby="publicationSeries">
+              ${context/publicationSeries}
+            </dd>
+          </div>
 
-      <div class="publicationrightsewrapper" tal:condition="context/publicationRights">
-        <p class="item-label">
-          <strong i18n:translate="rer_publication_rights">Copyrights</strong>:
-          <span class="item-value" tal:content="context/publicationRights">
-            Rights
-          </span>
-        </p>
-      </div>
+          <div class="publicationEditorWrapper publicationItem" tal:condition="context/publicationEditor">
+            <dt id="publicationEditor">
+              <strong i18n:translate="rer_publication_editor">Editor</strong>:
+            </dt>
+            <dd role="definition" labelledby="publicationEditor">
+              ${context/publicationEditor}
+            </dd>
+          </div>
 
-      <div class="urlwrapper" tal:condition="python: context.publicationURL != 'http://' and context.publicationURL">
-        <p class="item-label">
-          <strong i18n:translate="rer_publication_url">URL</strong>:
-          <a class="item-value"
-              tal:define="pubURL context/publicationURL | nothing"
-              tal:condition="pubURL"
-              tal:attributes="href pubURL">
-            ${pubURL}
-          </a>
-        </p>
-      </div>
+          <div class="publicationRightsWrapper publicationItem" tal:condition="context/publicationRights">
+            <dt id="publicationCopyrights">
+              <strong i18n:translate="rer_publication_rights">Copyrights</strong>:
+            </dt>
+            <dd role="definition" labelledby="publicationCopyrights">
+              ${context/publicationRights}
+            </dd>
+          </div>
 
-      <div class="filewrapper" tal:condition="context/publicationFile">
-	<tal:fileinfo tal:define="file_size python: view.get_file_size(context);
-	                          file_content_type python: view.get_mime_type(context);">
-        <p class="item-label" tal:define="file nocall:context/publicationFile">
-          <strong i18n:translate="rer_publication_download">Scarica la pubblicazione</strong>:
-          <a tal:attributes="href string:${context/absolute_url}/@@download/publicationFile/${context/publicationFile/filename}"> download </a>
-          <span class="file_info" tal:content="string: (${file_content_type}, ${file_size} MB)"></span>
-        </p>
-	</tal:fileinfo>
-      </div>
+          <div class="urlWrapper publicationItem" tal:condition="python: context.publicationURL and context.publicationURL != 'http://'">
+            <dt id="publicationURL">
+              <strong i18n:translate="rer_publication_url">URL</strong>:
+            </dt>
+            <dd role="definition" labelledby="publicationURL" tal:define="pubURL context/publicationURL">
+              <a href="${pubURL}">${pubURL}</a>
+            </dd>
+          </div>
 
+          <div class="fileWrapper publicationItem" tal:condition="context/publicationFile">
+            <tal:fileinfo tal:define="file_size python: view.get_file_size(context);
+                                      file_content_type python: view.get_mime_type(context);">
+              <dt id="publicationFile">
+                <strong i18n:translate="rer_publication_download">Scarica la pubblicazione</strong>:
+              </dt>
+              <dd role="definition" labelledby="publicationFile">
+                <a tal:attributes="href string:${context/absolute_url}/@@download/publicationFile/${context/publicationFile/filename}">download</a>
+                <span class="file_info" tal:content="string: (${file_content_type}, ${file_size} MB)"></span>
+              </dd>
+            </tal:fileinfo>
+          </div>
 
+        </dl>
 
-    </div>
-
-  </metal:block>
-  </metal:content-core>
-
-
-</body>
+      </metal:block>
+    </metal:content-core>
+  </body>
 </html>
