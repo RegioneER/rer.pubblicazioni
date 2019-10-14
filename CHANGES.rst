@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1.4 (unreleased)
+2.2.0 (2019-10-14)
 ------------------
 
 - Fix DOM semantic structure for pubblicazione view
