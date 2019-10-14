@@ -4,7 +4,8 @@ Changelog
 2.1.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix DOM semantic structure for pubblicazione view
+  [nzambello]
 
 
 2.1.3 (2019-09-18)
