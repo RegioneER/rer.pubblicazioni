@@ -4,7 +4,7 @@ Changelog
 2.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix typo [nzambello]
 
 
 2.2.1 (2019-10-15)
