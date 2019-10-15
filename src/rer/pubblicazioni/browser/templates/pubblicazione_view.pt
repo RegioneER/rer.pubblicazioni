@@ -96,7 +96,7 @@
             <dt>
               <strong i18n:translate="rer_publication_url">URL</strong>:
             </dt>
-            <tal:define="pubURL context/publicationURL">
+            <dd tal:define="pubURL context/publicationURL">
               <a href="${pubURL}">${pubURL}</a>
             </dd>
           </div>
