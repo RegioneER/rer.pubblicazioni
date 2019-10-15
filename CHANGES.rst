@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2.1 (unreleased)
+2.2.1 (2019-10-15)
 ------------------
 
 - Fix ARIA roles and a11y for pubblicazione view
