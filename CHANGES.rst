@@ -4,7 +4,8 @@ Changelog
 2.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix ARIA roles and a11y for pubblicazione view
+  [nzambello]
 
 
 2.2.0 (2019-10-14)

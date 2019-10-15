@@ -17,20 +17,20 @@
         <dl class="publicationWrapper">
 
           <div class="abstractwrapper publicationItem" tal:condition="context/abstract">
-            <dt id="abstract">
+            <dt>
               <strong i18n:translate="rer_description_abstract">Description/Abstract</strong>:
             </dt>
-            <dd role="definition" labelledby="abstract">
+            <dd>
               <div tal:replace="structure context/abstract/output|nothing" />
             </dd>
           </div>
 
           <div class="authorWrapper publicationItem" tal:condition="context/publicationAuthor">
-            <dt id="author">
+            <dt>
               <strong i18n:translate="rer_pub_author_tags">Author/Authors</strong>:
             </dt>
             <tal:author tal:repeat="author context/publicationAuthor">
-              <dd role="definition" labelledby="author">
+              <dd>
                 <a href="${context/portal_url}/@@search?authors=${author}">
                   ${author}
                 </a>
@@ -39,64 +39,64 @@
           </div>
 
           <div class="publicationDateWrapper publicationItem" tal:condition="context/publicationDate">
-            <dt id="publicationdate">
+            <dt>
               <strong i18n:translate="rer_publication_date">Publication date</strong>:
             </dt>
-            <dd role="definition" labelledby="publicationDate">
+            <dd>
               ${python: view.toLocalizedTime(context.publicationDate) or ''}
             </dd>
           </div>
 
           <div class="publicationTypeWrapper publicationItem" tal:condition="context/publicationType">
-            <dt id="publicationType">
+            <dt>
               <strong i18n:translate="rer_publication_type"> Publication type</strong>:
             </dt>
             <tal:author tal:repeat="type context/publicationType">
-              <dd role="definition" labelledby="publicationType">${type}</dd>
+              <dd>${type}</dd>
             </tal:author>
           </div>
 
           <div class="publicationLanguageWrapper publicationItem" tal:condition="context/publicationLanguage">
-            <dt id="publicationLanguage">
+            <dt>
               <strong i18n:translate="rer_publication_language">Language</strong>:
             </dt>
-            <dd role="definition" labelledby="publicationLanguage">
+            <dd>
               ${context/publicationLanguage}
             </dd>
           </div>
 
           <div class="publicationSeriesWrapper publicationItem" tal:condition="context/publicationSeries">
-            <dt id="publicationSeries">
+            <dt>
               <strong i18n:translate="rer_published_in">Published in</strong>:
             </dt>
-            <dd role="definition" labelledby="publicationSeries">
+            <dd>
               ${context/publicationSeries}
             </dd>
           </div>
 
           <div class="publicationEditorWrapper publicationItem" tal:condition="context/publicationEditor">
-            <dt id="publicationEditor">
+            <dt>
               <strong i18n:translate="rer_publication_editor">Editor</strong>:
             </dt>
-            <dd role="definition" labelledby="publicationEditor">
+            <dd>
               ${context/publicationEditor}
             </dd>
           </div>
 
           <div class="publicationRightsWrapper publicationItem" tal:condition="context/publicationRights">
-            <dt id="publicationCopyrights">
+            <dt>
               <strong i18n:translate="rer_publication_rights">Copyrights</strong>:
             </dt>
-            <dd role="definition" labelledby="publicationCopyrights">
+            <dd>
               ${context/publicationRights}
             </dd>
           </div>
 
           <div class="urlWrapper publicationItem" tal:condition="python: context.publicationURL and context.publicationURL != 'http://'">
-            <dt id="publicationURL">
+            <dt>
               <strong i18n:translate="rer_publication_url">URL</strong>:
             </dt>
-            <dd role="definition" labelledby="publicationURL" tal:define="pubURL context/publicationURL">
+            <tal:define="pubURL context/publicationURL">
               <a href="${pubURL}">${pubURL}</a>
             </dd>
           </div>
@@ -104,10 +104,10 @@
           <div class="fileWrapper publicationItem" tal:condition="context/publicationFile">
             <tal:fileinfo tal:define="file_size python: view.get_file_size(context);
                                       file_content_type python: view.get_mime_type(context);">
-              <dt id="publicationFile">
+              <dt>
                 <strong i18n:translate="rer_publication_download">Scarica la pubblicazione</strong>:
               </dt>
-              <dd role="definition" labelledby="publicationFile">
+              <dd>
                 <a tal:attributes="href string:${context/absolute_url}/@@download/publicationFile/${context/publicationFile/filename}">download</a>
                 <span class="file_info" tal:content="string: (${file_content_type}, ${file_size} MB)"></span>
               </dd>
