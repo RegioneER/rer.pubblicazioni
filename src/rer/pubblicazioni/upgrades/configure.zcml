@@ -30,7 +30,7 @@
     handler=".upgrades.update_authors_metadata"
     />
   <genericsetup:upgradeStep
-    source="1002"
+    source="1003"
     destination="1100"
     profile="rer.pubblicazioni:default"
     title="Fix authors index encoding"
