@@ -145,7 +145,7 @@ def to_1100(context):
     logger.info(
         'Updating author indexes for {} Pubblicazioni'.format(tot_brains)
     )
-    for brain, i in enumerate(brains):
+    for i, brain in enumerate(brains):
         brain.getObject().reindexObject(idxs=['author'])
         logger.info('[{index}/{tot}] - {path} REINDEXED'.format(
             index=i+1,
