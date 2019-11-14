@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='rer.pubblicazioni',
-    version='2.2.3',
+    version='2.2.4.dev0',
     description="An add-on to manage publications for Regione Emilia Romagna.",
     long_description=long_description,
     # Get more from https://pypi.python.org/pypi?%3Aaction=list_classifiers
