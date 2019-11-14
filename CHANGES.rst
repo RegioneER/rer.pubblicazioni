@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2.3 (unreleased)
+2.2.3 (2019-11-14)
 ------------------
 
 - Fix author index encoding for authors (#20207).
