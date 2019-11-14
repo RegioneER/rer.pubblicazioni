@@ -26,22 +26,24 @@ class SearchPubblicazioni(Tile):
 
     def get_authors(self):
         search_path = self.get_search_path()
-        portal_catalog = api.portal.get_tool('portal_catalog')
-        # api.user.has_permission(permissions.ModifyPortalContent, obj=self.context)  # noqa
-        # CHECK: va bene fare solo la separazione per gli anonimi o meglio
-        # scremare anche per permessi?
-        if api.user.is_anonymous():
-            # mostriamo solo le voci degli autori dei contenuti pubblicati
-            results = portal_catalog(
-                portal_type='Pubblicazione',
-                path=search_path,
-                review_state='published',
-            )
-        else:
-            results = portal_catalog(
-                portal_type='Pubblicazione', path=search_path
-            )
-
+        # portal_catalog = api.portal.get_tool('portal_catalog')
+        # # api.user.has_permission(permissions.ModifyPortalContent, obj=self.context)  # noqa
+        # # CHECK: va bene fare solo la separazione per gli anonimi o meglio
+        # # scremare anche per permessi?
+        # if api.user.is_anonymous():
+        #     # mostriamo solo le voci degli autori dei contenuti pubblicati
+        #     results = portal_catalog(
+        #         portal_type='Pubblicazione',
+        #         path=search_path,
+        #         review_state='published',
+        #     )
+        # else:
+        #     results = portal_catalog(
+        #         portal_type='Pubblicazione', path=search_path
+        #     )
+        results = api.content.find(
+            portal_type='Pubblicazione', path=search_path
+        )
         authors_options = []
 
         for brain in results:
@@ -50,21 +52,20 @@ class SearchPubblicazioni(Tile):
                     if author not in authors_options:
                         authors_options.append(author)
 
-        # sorted_set = sorted(authors_options)
-        # terms = []
-        # for author in sorted(authors_options):
-        #     try:
-        #         terms.append(
-        #             SimpleTerm(title=author, token=author, value=author)
-        #         )
-        #     except Exception:
-        #         import pdb
-
-        #         pdb.set_trace()
-        terms = [
-            SimpleTerm(title=author, token=author, value=author)
-            for author in sorted(authors_options)
-        ]
+        terms = []
+        for author in sorted(authors_options):
+            try:
+                terms.append(
+                    SimpleTerm(title=author, token=author, value=author)
+                )
+            except Exception:
+                terms.append(
+                    SimpleTerm(
+                        title=author.decode('utf-8'),
+                        value=author.decode('utf-8'),
+                        token=author,
+                    )
+                )
         vocabulary = SimpleVocabulary(terms)
 
         return vocabulary

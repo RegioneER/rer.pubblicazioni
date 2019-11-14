@@ -137,3 +137,18 @@ def fix_author_field(context):
                         u"Error while committing transaction.")
                     logger.error(u"{}".format(e))
                 pubs_changed = 0
+
+
+def to_1100(context):
+    brains = api.content.find(portal_type='Pubblicazione')
+    tot_brains = len(brains)
+    logger.info(
+        'Updating author indexes for {} Pubblicazioni'.format(tot_brains)
+    )
+    for brain, i in enumerate(brains):
+        brain.getObject().reindexObject(idxs=['author'])
+        logger.info('[{index}/{tot}] - {path} REINDEXED'.format(
+            index=i+1,
+            tot=tot_brains,
+            path=brain.getPath()
+        ))

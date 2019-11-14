@@ -29,5 +29,13 @@
     description="Now you have 'authors' metadata in the brain."
     handler=".upgrades.update_authors_metadata"
     />
+  <genericsetup:upgradeStep
+    source="1002"
+    destination="1100"
+    profile="rer.pubblicazioni:default"
+    title="Fix authors index encoding"
+    description=""
+    handler=".upgrades.to_1100"
+    />
 
 </configure>
