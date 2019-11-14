@@ -4,7 +4,8 @@ Changelog
 2.2.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix author index encoding for authors (#20207).
+  [cekk]
 
 
 2.2.2 (2019-10-15)

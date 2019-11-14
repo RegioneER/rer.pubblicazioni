@@ -26,21 +26,6 @@ class SearchPubblicazioni(Tile):
 
     def get_authors(self):
         search_path = self.get_search_path()
-        # portal_catalog = api.portal.get_tool('portal_catalog')
-        # # api.user.has_permission(permissions.ModifyPortalContent, obj=self.context)  # noqa
-        # # CHECK: va bene fare solo la separazione per gli anonimi o meglio
-        # # scremare anche per permessi?
-        # if api.user.is_anonymous():
-        #     # mostriamo solo le voci degli autori dei contenuti pubblicati
-        #     results = portal_catalog(
-        #         portal_type='Pubblicazione',
-        #         path=search_path,
-        #         review_state='published',
-        #     )
-        # else:
-        #     results = portal_catalog(
-        #         portal_type='Pubblicazione', path=search_path
-        #     )
         results = api.content.find(
             portal_type='Pubblicazione', path=search_path
         )
@@ -54,26 +39,21 @@ class SearchPubblicazioni(Tile):
 
         terms = []
         for author in sorted(authors_options):
-            try:
-                terms.append(
-                    SimpleTerm(title=author, token=author, value=author)
+            terms.append(
+                SimpleTerm(
+                    title=author.decode('utf-8'),
+                    token=author,
+                    value=author.decode('utf-8'),
                 )
-            except Exception:
-                terms.append(
-                    SimpleTerm(
-                        title=author.decode('utf-8'),
-                        value=author.decode('utf-8'),
-                        token=author,
-                    )
-                )
+            )
         vocabulary = SimpleVocabulary(terms)
 
         return vocabulary
 
     def get_publication_type(self):
         values = api.portal.get_registry_record(
-            'rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.tipologie'
-        )  # noqa
+            'rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.tipologie'  # noqa
+        )
         if values:
             return values.split('\r\n')
         else:
@@ -81,8 +61,8 @@ class SearchPubblicazioni(Tile):
 
     def get_publication_language(self):
         values = api.portal.get_registry_record(
-            'rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.lingue'
-        )  # noqa
+            'rer.pubblicazioni.browser.settings.IRerPubblicazioniSettings.lingue'  # noqa
+        )
         if values:
             return values.split('\r\n')
         else:
