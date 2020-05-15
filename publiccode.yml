@@ -1,0 +1,81 @@
+# This repository adheres to the publiccode.yml standard by including this 
+# metadata file that makes public software easily discoverable.
+# More info at https://github.com/italia/publiccode.yml
+
+publiccodeYmlVersion: '0.2'
+categories:
+  - application-development
+  - content-management
+dependsOn:
+  open:
+    - name: Plone
+      optional: false
+      version: ''
+      versionMax: ''
+      versionMin: '5'
+logo: docs/rer-logo.png
+description:
+  it:
+    features:
+      - pubblicazioni
+      - Tile di ricercac
+    genericName: Plone addon
+    longDescription: >
+      Plugin Plone5 dexterity per gestire le pubblicazioni nei siti della RER,
+      consentendo di creare dei contenuti con un abstract, uno o più autori, un
+      revisore e una data di pubblicazione.
+
+      La pubblicazione può consistere verso l'utente come un oggetto file
+      scaricabile oppure come un link ad una risorsa esterna.
+
+
+      Oltre al contenuto ed alla vista di questo, è disponibile una vista ad hoc
+      per le collezioni.
+
+
+      Abilita inoltre la tile per la ricerca delle pubblicazioni e per mostrare
+      una collezione di queste.
+    shortDescription: >-
+      Plugin Plone5 dexterity per gestire le pubblicazioni nei siti della
+      Regione Emilia-Romagna.
+developmentStatus: stable
+it:
+  conforme:
+    gdpr: true
+    lineeGuidaDesign: false
+    misureMinimeSicurezza: true
+    modelloInteroperabilita: false
+  countryExtensionVersion: '0.2'
+  piattaforme:
+    anpr: false
+    cie: false
+    pagopa: false
+    spid: false
+legal:
+  license: GPL-2.0-only
+  mainCopyrightOwner: Regione Emilia-Romagna
+  repoOwner: Regione Emilia-Romagna
+localisation:
+  availableLanguages:
+    - it
+    - en
+  localisationReady: true
+maintenance:
+  contacts:
+    - affiliation: Regione Emilia-Romagna
+      email: webmaster@regione.emilia-romagna.it
+      name: Sara Turra
+  contractors:
+    - name: RedTurtle
+      until: '2020-08-31'
+      website: 'https://www.redturtle.it/'
+  type: contract
+name: rer.pubblicazioni
+platforms:
+  - web
+releaseDate: '2018-01-29'
+softwareType: addon
+softwareVersion: 2.2.3
+url: 'https://github.com/RegioneER/rer.pubblicazioni'
+usedBy:
+  - Regione Emilia-Romagna
