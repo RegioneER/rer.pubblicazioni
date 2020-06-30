@@ -40,6 +40,8 @@ description:
       Regione Emilia-Romagna.
 developmentStatus: stable
 it:
+  riuso:
+    codiceIPA: r_emiro
   conforme:
     gdpr: true
     lineeGuidaDesign: false
