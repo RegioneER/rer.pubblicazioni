@@ -21,10 +21,24 @@ description:
       - Tile di ricerca
     genericName: Plone addon
     longDescription: >
-      Plugin per Plone che aggiunge un nuovo tipo di contenuto per gestire le pubblicazioni dell’Ente. 
-      Il contenuto “Pubblicazione” consente di caricare le informazioni tipiche di una pubblicazione: abstract, autore/i, editore, data di pubblicazione, collana, diritti, tipologia di pubblicazione, immagine di copertina. La vera pubblicazione può essere messa a disposizione dell’utente finale come file scaricabile oppure come link ad una risorsa esterna.
-      La tipologia di pubblicazione e le lingue disponibili si possono configurare in un apposito pannello di controllo.
-      Oltre al contenuto e alla sua vista di dettaglio, è disponibile una tile per la ricerca delle pubblicazioni, una vista ad hoc per le collezioni e una per le tile collection.
+      Plugin per Plone che aggiunge un nuovo tipo di contenuto per gestire le
+      pubblicazioni dell'Ente. 
+
+
+      Il contenuto "Pubblicazione" consente di caricare le informazioni tipiche
+      di una pubblicazione: abstract, autore/i, editore, data di pubblicazione,
+      collana, diritti, tipologia di pubblicazione, immagine di copertina. La
+      vera pubblicazione può essere messa a disposizione dell'utente finale come
+      file scaricabile oppure come link ad una risorsa esterna. 
+
+
+      La tipologia di pubblicazione e le lingue disponibili si possono
+      configurare in un apposito pannello di controllo. 
+
+
+      Oltre al contenuto e alla sua vista di dettaglio, è disponibile una tile
+      per la ricerca delle pubblicazioni, una vista ad hoc per le collezioni e
+      una per le tile collection.
     shortDescription: >-
       Modulo per censire le Pubblicazioni nei siti della PA.
     screenshots: 
