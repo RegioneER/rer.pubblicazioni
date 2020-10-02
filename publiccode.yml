@@ -18,26 +18,34 @@ description:
   it:
     features:
       - pubblicazioni
-      - Tile di ricercac
+      - Tile di ricerca
     genericName: Plone addon
     longDescription: >
-      Plugin Plone5 dexterity per gestire le pubblicazioni nei siti della RER,
-      consentendo di creare dei contenuti con un abstract, uno o più autori, un
-      revisore e una data di pubblicazione.
-
-      La pubblicazione può consistere verso l'utente come un oggetto file
-      scaricabile oppure come un link ad una risorsa esterna.
+      Plugin per Plone che aggiunge un nuovo tipo di contenuto per gestire le
+      pubblicazioni dell'Ente. 
 
 
-      Oltre al contenuto ed alla vista di questo, è disponibile una vista ad hoc
-      per le collezioni.
+      Il contenuto "Pubblicazione" consente di caricare le informazioni tipiche
+      di una pubblicazione: abstract, autore/i, editore, data di pubblicazione,
+      collana, diritti, tipologia di pubblicazione, immagine di copertina. La
+      vera pubblicazione può essere messa a disposizione dell'utente finale come
+      file scaricabile oppure come link ad una risorsa esterna. 
 
 
-      Abilita inoltre la tile per la ricerca delle pubblicazioni e per mostrare
-      una collezione di queste.
+      La tipologia di pubblicazione e le lingue disponibili si possono
+      configurare in un apposito pannello di controllo. 
+
+
+      Oltre al contenuto e alla sua vista di dettaglio, è disponibile una tile
+      per la ricerca delle pubblicazioni, una vista ad hoc per le collezioni e
+      una per le tile collection.
     shortDescription: >-
-      Plugin Plone5 dexterity per gestire le pubblicazioni nei siti della
-      Regione Emilia-Romagna.
+      Modulo per censire le Pubblicazioni nei siti della PA.
+    screenshots: 
+      - docs/Pubblicazioni_Collezione.JPG
+      - docs/Pubblicazioni_Dettaglio.JPG
+      - docs/Pubblicazioni_motore-di-ricerca.JPG
+      - docs/Pubblicazioni_Pannello-di-configurazione.JPG
 developmentStatus: stable
 it:
   riuso:
@@ -72,7 +80,7 @@ maintenance:
       until: '2020-08-31'
       website: 'https://www.redturtle.it/'
   type: contract
-name: rer.pubblicazioni
+name: Catalogo pubblicazioni per CMS Plone
 platforms:
   - web
 releaseDate: '2018-01-29'
