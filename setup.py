@@ -43,6 +43,7 @@ setup(
         'setuptools',
         'z3c.jbot',
         'plone.app.dexterity',
+        'collective.tiles.collection'
     ],
     extras_require={
         'test': [

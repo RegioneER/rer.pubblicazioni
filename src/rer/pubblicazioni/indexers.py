@@ -2,7 +2,6 @@
 from plone.indexer.decorator import indexer
 from .interfaces import IPubblicazione
 from plone.app.contenttypes.indexers import _unicode_save_string_concat
-from Acquisition import aq_base
 from plone.app.textfield.value import IRichTextValue
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
@@ -17,7 +16,7 @@ def SearchableText(obj):
             text = (
                 transforms.convertTo(
                     'text/plain',
-                    safe_unicode(textvalue.raw).encode('utf-8'),
+                    safe_unicode(textvalue.raw),
                     mimetype=textvalue.mimeType,
                 )
                 .getData()
@@ -42,11 +41,10 @@ def author_indexer(obj, **kw):
     """ Factory method per l'indicizzazione del campo autori di una
     pubblicazione.
     """
-    if not getattr(obj, 'publicationAuthor', ()):
+    publicationAuthor = getattr(obj, 'publicationAuthor', ())
+    if not publicationAuthor:
         return
-    return map(
-        lambda x: x.encode('utf-8'), getattr(obj, 'publicationAuthor', ())
-    )
+    return publicationAuthor
 
 
 @indexer(IPubblicazione)

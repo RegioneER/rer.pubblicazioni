@@ -8,6 +8,9 @@
 
   <includeDependencies package="." />
 
+  <include package="plone.tiles" />
+  <include package="plone.app.tiles" />  
+
   <include package=".browser" />
   <include package=".tiles" />
   <include package=".upgrades" />

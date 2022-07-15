@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from Products.Five.browser import BrowserView
 from collective.tiles.collection.interfaces import ICollectionTileRenderer
-from zope.interface import implements
+from zope.interface import implementer
 from collective.tiles.collection import _
 from zope.component import getUtility
 from plone.memoize.view import memoize
@@ -11,8 +11,8 @@ from zope.component import getMultiAdapter
 from DateTime import DateTime
 
 
+@implementer(ICollectionTileRenderer)
 class PubblicazioniCollectionRenderer(BrowserView):
-    implements(ICollectionTileRenderer)
 
     display_name = _("Layout pubblicazioni")
 

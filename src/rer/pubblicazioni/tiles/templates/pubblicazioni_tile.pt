@@ -34,7 +34,7 @@
                                  item_wf_state_class python:'state-' + plone_view.normalizeString(item_wf_state);
                                  item_type obj/portal_type;
                                  item_type_class python:'contenttype-' + plone_view.normalizeString(item_type);
-                                 item_has_image python:obj.image;
+                                 item_has_image python:getattr(obj, 'image', None);
                                  image_scale portal/@@image_scale;
                                  publication_author obj/publicationAuthor|nothing;
                                  publication_date obj/publicationDate|nothing;

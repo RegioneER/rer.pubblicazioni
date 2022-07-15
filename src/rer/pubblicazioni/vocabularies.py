@@ -52,8 +52,7 @@ class Tipologie(object):
                 title=u'-- aggiungi tipologie dal pannello di controllo --',
                 value='')]
             return terms
-        terms = [SimpleTerm(title=value.encode('utf-8'),
-                            value=value.encode('utf-8'))
+        terms = [SimpleTerm(title=value, value=value)
                  for value in
                  view.extract_value_from_settings('tipologie').split('\r\n')
                  ]
@@ -137,8 +136,7 @@ class BaseIndexValuesVocabulary(object):
 
         values = pc.uniqueValuesFor(self.INDEX)
         values = sorted(values)
-        terms = [SimpleTerm(title=value.encode('utf-8'),
-                 value=value.encode('utf-8')) for value in values if value]
+        terms = [SimpleTerm(title=v, value=v) for v in values if v]
         return SimpleVocabulary(terms)
 
 
@@ -148,7 +146,7 @@ class PublicationUsedLanguagesVocabulary(BaseIndexValuesVocabulary):
     INDEX = 'publication_language'
 
 
-PublicationUsedLanguagesVocabularyFactory = PublicationUsedLanguagesVocabulary()
+PublicationUsedLanguagesVocabularyFactory = PublicationUsedLanguagesVocabulary() # noqa
 
 
 @implementer(IVocabularyFactory)

@@ -33,4 +33,3 @@ class ISearchPubblicazioniTile(model.Schema):
         required=False,
         default=u'',
     )
-

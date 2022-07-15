@@ -62,7 +62,6 @@ def update_authors_metadata(context):
             try:
                 logger.info("Partial Commit...")
                 transaction.commit()
-                print "Partial Commit: OK"
             except Exception as e:
                 logger.error(
                     u"Error while committing transaction.")
@@ -129,9 +128,7 @@ def fix_author_field(context):
 
             if pubs_changed > 10:
                 try:
-                    print "Partial Commit..."
                     transaction.commit()
-                    print "Partial Commit: OK"
                 except Exception as e:
                     logger.error(
                         u"Error while committing transaction.")

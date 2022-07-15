@@ -3,9 +3,6 @@
 from plone import api
 from plone.app.uuid.utils import uuidToObject
 from plone.tiles import Tile
-from Products.CMFCore import permissions
-from zope.component import getUtility
-from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 
@@ -39,13 +36,7 @@ class SearchPubblicazioni(Tile):
 
         terms = []
         for author in sorted(authors_options):
-            terms.append(
-                SimpleTerm(
-                    title=author.decode('utf-8'),
-                    token=author,
-                    value=author.decode('utf-8'),
-                )
-            )
+            terms.append(SimpleTerm(title=author, token=author, value=author,))
         vocabulary = SimpleVocabulary(terms)
 
         return vocabulary

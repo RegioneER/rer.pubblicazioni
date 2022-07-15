@@ -3,5 +3,7 @@
   <version>1100</version>
   <dependencies>
     <dependency>profile-plone.app.dexterity:default</dependency>
+    <dependency>profile-redturtle.tiles.management:default</dependency>
+    <dependency>profile-collective.tiles.collection:default</dependency>
   </dependencies>
 </metadata>
