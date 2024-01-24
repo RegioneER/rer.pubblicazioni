@@ -6,12 +6,22 @@ from zope import schema
 
 
 class IRerPubblicazioniSettings(model.Schema):
-    lingue = schema.Text(
-        title="Lingue", description="Lingue per le pubblicazioni", required=False
+    lingue = schema.Tuple(
+        title="Lingue",
+        description="Lingue per le pubblicazioni",
+        required=True,
+        value_type=schema.TextLine(),
+        missing_value=None,
+        default=(),
     )
 
-    tipologie = schema.Text(
-        title="Tipologie", description="Tipologie delle pubblicazioni", required=False
+    tipologie = schema.Tuple(
+        title="Tipologie",
+        description="Tipologie delle pubblicazioni",
+        required=True,
+        value_type=schema.TextLine(),
+        missing_value=None,
+        default=(),
     )
 
 
