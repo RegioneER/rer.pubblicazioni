@@ -6,13 +6,8 @@
 
   <i18n:registerTranslations directory="locales" />
 
-  <includeDependencies package="." />
-
-  <include package="plone.tiles" />
-  <include package="plone.app.tiles" />  
-
   <include package=".browser" />
-  <include package=".tiles" />
+  <include package=".restapi" />
   <include package=".upgrades" />
 
   <genericsetup:registerProfile

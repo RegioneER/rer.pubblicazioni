@@ -2,12 +2,12 @@
 <object
     name="portal_controlpanel"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="silvuple">
+    i18n:domain="">
 
     <configlet
         title="Configurazione Rer Pubblicazioni"
-        action_id="rer-pubblicazioni-settings"
-        appId="rerpubblicazioni"
+        action_id="PubblicazioniSettings"
+        appId="PubblicazioniSettings"
         category="Products"
         condition_expr=""
         url_expr="string:${portal_url}/@@rer-pubblicazioni-settings"

@@ -8,14 +8,14 @@ from Products.CMFPlone.utils import safe_unicode
 
 
 def SearchableText(obj):
-    text = u''
+    text = ""
     if obj.abstract:
         textvalue = obj.abstract
         if IRichTextValue.providedBy(textvalue):
-            transforms = getToolByName(obj, 'portal_transforms')
+            transforms = getToolByName(obj, "portal_transforms")
             text = (
                 transforms.convertTo(
-                    'text/plain',
+                    "text/plain",
                     safe_unicode(textvalue.raw),
                     mimetype=textvalue.mimeType,
                 )
@@ -23,13 +23,13 @@ def SearchableText(obj):
                 .strip()
             )
 
-    subject = u' '.join([safe_unicode(s) for s in obj.Subject()])
+    subject = " ".join([safe_unicode(s) for s in obj.Subject()])
 
-    return u' '.join(
+    return " ".join(
         (
             safe_unicode(obj.id),
-            safe_unicode(obj.title) or u'',
-            safe_unicode(obj.description) or u'',
+            safe_unicode(obj.title) or "",
+            safe_unicode(obj.description) or "",
             safe_unicode(text),
             safe_unicode(subject),
         )
@@ -38,13 +38,10 @@ def SearchableText(obj):
 
 @indexer(IPubblicazione)
 def author_indexer(obj, **kw):
-    """ Factory method per l'indicizzazione del campo autori di una
+    """Factory method per l'indicizzazione del campo autori di una
     pubblicazione.
     """
-    publicationAuthor = getattr(obj, 'publicationAuthor', ())
-    if not publicationAuthor:
-        return
-    return publicationAuthor
+    return getattr(obj, "publicationAuthor", ())
 
 
 @indexer(IPubblicazione)
