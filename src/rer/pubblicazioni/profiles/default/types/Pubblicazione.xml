@@ -43,6 +43,7 @@
     <element value="plone.relateditems" />
     <element value="plone.shortname" />
     <element value="plone.tableofcontents" />
+    <element value="volto.enhanced_links_enabled" />
   </property>
 
   <!-- View information -->
