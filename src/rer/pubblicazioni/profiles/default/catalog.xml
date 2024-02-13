@@ -12,6 +12,7 @@
   <index name="publication_date" meta_type="DateIndex">
     <indexed_attr value="publication_date"/>
   </index>
+  <column value="publication_date"/>
 
   <column value="authors"/>
   <column value="publication_types"/>
