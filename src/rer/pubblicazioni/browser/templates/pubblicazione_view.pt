@@ -6,10 +6,6 @@
       metal:use-macro="context/main_template/macros/master"
       i18n:domain="rer.pubblicazioni">
 
-  <metal:css fill-slot="style_slot">
-    <link rel="stylesheet" type="text/css" href="${context/portal_url}/++plone++rer.pubblicazioni/css/pubblicazioni.css">
-  </metal:css>
-
   <body>
 
     <metal:content-core fill-slot="content-core">

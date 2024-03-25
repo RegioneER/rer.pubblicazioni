@@ -4,7 +4,8 @@ Changelog
 2.2.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Python3 and Plone6 compatibility.
+  [cekk]
 
 
 2.2.3 (2019-11-14)

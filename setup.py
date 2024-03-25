@@ -42,7 +42,6 @@ setup(
     install_requires=[
         "setuptools",
         "z3c.jbot",
-        "collective.volto.enhancedlinks",
         "plone.volto",
     ],
     extras_require={

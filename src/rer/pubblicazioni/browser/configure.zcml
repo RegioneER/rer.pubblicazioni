@@ -23,7 +23,7 @@
 
   <!-- vista per il tipo: Pubblicazione -->
   <browser:page
-      name="pubblicazione_main_view"
+      name="view"
       for="rer.pubblicazioni.interfaces.IPubblicazione"
       class=".views.PubblicazioneView"
       template="templates/pubblicazione_view.pt"
