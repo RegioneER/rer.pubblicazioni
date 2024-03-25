@@ -6,10 +6,8 @@
 
   <i18n:registerTranslations directory="locales" />
 
-  <includeDependencies package="." />
-
   <include package=".browser" />
-  <include package=".tiles" />
+  <include package=".restapi" />
   <include package=".upgrades" />
 
   <genericsetup:registerProfile

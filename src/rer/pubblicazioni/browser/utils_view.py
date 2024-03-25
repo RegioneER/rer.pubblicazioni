@@ -5,14 +5,13 @@ from plone.api.exc import InvalidParameterError
 from plone.memoize import view
 from Products.Five import BrowserView
 from rer.pubblicazioni.browser.interfaces import IRerPubblicazioniUtilsView
-from zope.interface import implements
+from zope.interface import implementer
 from rer.pubblicazioni import logger
 
 
+@implementer(IRerPubblicazioniUtilsView)
 class RerPubblicazioniUtilsView(BrowserView):
     """ """
-
-    implements(IRerPubblicazioniUtilsView)
 
     @view.memoize
     def extract_value_from_settings(self, entry_name):
