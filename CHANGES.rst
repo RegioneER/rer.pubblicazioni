@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.2.4 (unreleased)
+3.0.0 (2024-03-25)
 ------------------
 
 - Python3 and Plone6 compatibility.
