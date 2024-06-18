@@ -7,4 +7,5 @@ exclude LICENSE.GPL
 exclude .nvmrc
 exclude package.json
 exclude requirements.txt
+exclude publiccode.yml
 global-exclude *.pyc
