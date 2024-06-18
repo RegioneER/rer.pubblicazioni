@@ -4,7 +4,8 @@ Changelog
 3.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add default value in publicationAuthor field (#28553).
+  [cekk]
 
 
 3.0.1 (2024-03-25)

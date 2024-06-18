@@ -40,6 +40,7 @@ class IPubblicazione(Interface):
         value_type=schema.TextLine(),
         required=False,
         missing_value=(),
+        default=(),
     )
     directives.widget(
         "publicationAuthor",
