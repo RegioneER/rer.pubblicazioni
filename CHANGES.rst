@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.2 (unreleased)
+3.0.2 (2024-06-18)
 ------------------
 
 - Add default value in publicationAuthor field (#28553).
