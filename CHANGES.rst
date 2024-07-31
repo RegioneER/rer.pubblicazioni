@@ -4,7 +4,8 @@ Changelog
 3.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add default value.
+  [cekk]
 
 
 3.0.2 (2024-06-18)

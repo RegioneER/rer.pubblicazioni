@@ -75,7 +75,8 @@ class IPubblicazione(Interface):
             default="Select the language of this publication",
         ),
         required=False,
-        default=None,
+        default="",
+        missing_value="",
         vocabulary="rer.pubblicazioni.lingue",
     )
 
