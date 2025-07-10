@@ -4,7 +4,8 @@ Changelog
 3.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Convert abstract field from RichTextValue to BlocksField.
+  [cekk]
 
 
 3.0.3 (2024-07-31)

@@ -10,6 +10,7 @@ from zope import schema
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from plone.restapi.controlpanels.interfaces import IControlpanel
+from collective.volto.blocksfield.field import BlocksField
 
 
 class IRerPubblicazioniLayer(IDefaultBrowserLayer):
@@ -23,7 +24,7 @@ class IRerPubblicazioniRestapiControlpanel(IControlpanel):
 
 
 class IPubblicazione(Interface):
-    abstract = RichText(
+    abstract = BlocksField(
         title=_("rer_description_abstract", default="Description/Abstract"),
         description=_(
             "help_rer_description_abstract", default="An abstract of the publication."
