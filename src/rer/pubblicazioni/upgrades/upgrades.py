@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
 
 from plone import api
+from bs4 import BeautifulSoup
 from rer.pubblicazioni import logger
 import transaction
+import requests
+from plone.app.textfield import RichTextValue
+from plone.volto.browser.migrate_richtext import get_blocks_from_richtext
 
 
 DEFAULT_PROFILE = "profile-rer.pubblicazioni:default"
@@ -162,3 +166,69 @@ def to_1110(context):
     for i, brain in enumerate(brains):
         item = brain.getObject()
         item.reindexObject(idxs=["enhanced_links_enabled"])
+
+
+def to_1200(context):
+    """
+    Convert from RichTextValue to BlocksField
+    """
+
+    def get_clean_text(text):
+        """
+        Clean html text
+        """
+        text = text.replace("<span>&nbsp;</span>", " ").replace(
+            "<span>\xa0</span>", " "
+        )
+
+        soup = BeautifulSoup(text, "html.parser")
+        # remove span from text
+        for match in soup.findAll("span"):
+            match.unwrap()
+
+        # remove empty links
+        for match in soup.findAll("a"):
+            if not match.text and not match.findAll():
+                match.extract()
+        return str(soup)
+
+    session = requests.Session()
+    session.headers.update(
+        {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+        }
+    )
+    tool_url = "http://localhost:9000/html"
+
+    # test that the service is up
+    r = session.post(
+        tool_url,
+        json={"html": "<p>text</p>"},
+    )
+    r.raise_for_status()
+
+    brains = api.content.find(portal_type="Pubblicazione")
+    tot_brains = len(brains)
+    fixed = []
+    logger.info(f"Updating {tot_brains} Pubblicazioni")
+    for i, brain in enumerate(brains):
+        logger.info(f"Progress [{i}/{tot_brains}]")
+        item = brain.getObject()
+        abstract = getattr(item, "abstract", None)
+        if not abstract:
+            continue
+        if not isinstance(abstract, RichTextValue):
+            continue
+
+        text_blocks, text_uuids = get_blocks_from_richtext(
+            get_clean_text(abstract.raw),
+            service_url=tool_url,
+            slate=True,
+        )
+        item.abstract = {"blocks": text_blocks, "blocks_layout": {"items": text_uuids}}
+        fixed.append(item.absolute_url())
+
+    logger.info(f"Fixed {len(fixed)} Pubblicazioni")
+    for url in fixed:
+        logger.info(f"- {url}")
