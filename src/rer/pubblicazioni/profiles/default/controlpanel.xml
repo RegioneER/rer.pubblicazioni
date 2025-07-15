@@ -5,7 +5,7 @@
     i18n:domain="">
 
     <configlet
-        title="Configurazione Rer Pubblicazioni"
+        title="RER Pubblicazioni"
         action_id="PubblicazioniSettings"
         appId="PubblicazioniSettings"
         category="Products"

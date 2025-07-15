@@ -33,6 +33,10 @@ def import_catalog(context):
     import_registry("catalog")
 
 
+def import_controlpanel(context):
+    import_registry("controlpanel")
+
+
 def update_authors_metadata(context):
     """With the version 1003, we add a new metadata column to the brain.
     We update the catalog configuration and re-index all the pubblications.
