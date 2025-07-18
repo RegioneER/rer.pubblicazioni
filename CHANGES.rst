@@ -1,10 +1,17 @@
 Changelog
 =========
 
-3.0.4 (unreleased)
+3.0.5 (unreleased)
 ------------------
 
 - Convert abstract field from RichTextValue to BlocksField.
+  [cekk]
+
+
+3.0.4 (2025-07-15)
+------------------
+
+- Fix controlpanel label.
   [cekk]
 
 

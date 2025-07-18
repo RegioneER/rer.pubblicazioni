@@ -31,6 +31,7 @@ class IPubblicazione(Interface):
         ),
         required=False,
     )
+    directives.widget("abstract", allowedBlocks=["slate"])
 
     publicationAuthor = schema.Tuple(
         title=_("rer_pub_author_tags", default="Author/Authors"),
