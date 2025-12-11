@@ -55,4 +55,13 @@
     description=""
     handler=".upgrades.import_controlpanel"
     />
+
+  <genericsetup:upgradeStep
+    source="1200"
+    destination="1210"
+    profile="rer.pubblicazioni:default"
+    title="Convert abstract from RichText to BlocksField"
+    description=""
+    handler=".upgrades.to_1210"
+    />
 </configure>
