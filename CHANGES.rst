@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.0.5 (unreleased)
+3.0.5 (2025-12-11)
 ------------------
 
 - Convert abstract field from RichTextValue to BlocksField.
