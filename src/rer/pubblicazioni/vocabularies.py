@@ -19,7 +19,7 @@ try:
         KeywordsVocabulary as BaseKeywordsVocabulary,
     )
 except ImportError:
-    from plone.app.vocabularies.subject import (
+    from plone.app.vocabularies.catalog import (
         KeywordsVocabulary as BaseKeywordsVocabulary,
     )
 
