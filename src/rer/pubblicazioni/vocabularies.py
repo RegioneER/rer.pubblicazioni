@@ -13,10 +13,15 @@ from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
 from zope.site.hooks import getSite
 from plone import api
-from plone.volto.vocabularies.subject import (
-    KeywordsVocabulary as BaseKeywordsVocabulary,
-)
-
+try:
+    # plone.volto < 5
+    from plone.volto.vocabularies.subject import (
+        KeywordsVocabulary as BaseKeywordsVocabulary,
+    )
+except ImportError:
+    from plone.app.vocabularies.subject import (
+        KeywordsVocabulary as BaseKeywordsVocabulary,
+    )
 
 @implementer(IVocabularyFactory)
 class Lingue(object):
