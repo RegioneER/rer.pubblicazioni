@@ -46,22 +46,34 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        "setuptools",
         "z3c.jbot",
         "plone.volto",
         "collective.volto.blocksfield",
         # plone.volto's migrate_richtext view imports requests without
         # declaring it as a dependency.
         "requests",
+        "Zope",
+        "Products.CMFCore",
+        "Products.CMFPlone",
+        "plone.api",
+        "plone.app.contenttypes",
+        "plone.app.registry",
+        "plone.app.textfield",
+        "plone.app.vocabularies",
+        "plone.app.z3cform",
+        "plone.autoform",
+        "plone.dexterity",
+        "plone.indexer",
+        "plone.memoize",
+        "plone.namedfile",
+        "plone.restapi",
+        "plone.supermodel",
+        "beautifulsoup4",
     ],
     extras_require={
         "test": [
             "plone.app.testing",
-            # Plone KGS does not use this version, because it would break
-            # Remove if your package shall be part of coredev.
-            # plone_coredev tests as of 2016-04-01.
-            "plone.testing>=5.0.0",
-            "plone.app.contenttypes",
+            "plone.browserlayer",
             # plone.app.contenttypes.testing imports this unconditionally,
             # even without robot tests of our own.
             "plone.app.robotframework",
