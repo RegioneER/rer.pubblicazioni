@@ -1,67 +1,68 @@
 <configure
-  xmlns="http://namespaces.zope.org/zope"
-  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-  i18n_domain="rer.pubblicazioni">
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="rer.pubblicazioni"
+    >
 
   <genericsetup:upgradeStep
-    source="1000"
-    destination="1001"
-    profile="rer.pubblicazioni:default"
-    title="Import plone js registry"
-    description="Update js resources"
-    handler=".upgrades.import_js_registry"
-    />
+      title="Import plone js registry"
+      description="Update js resources"
+      profile="rer.pubblicazioni:default"
+      source="1000"
+      destination="1001"
+      handler=".upgrades.import_js_registry"
+      />
 
   <genericsetup:upgradeStep
-    source="1001"
-    destination="1002"
-    profile="rer.pubblicazioni:default"
-    title="Fix wrongly filled authors field"
-    description="Fix authors' names if they where written separated by commas."
-    handler=".upgrades.fix_author_field"
-    />
+      title="Fix wrongly filled authors field"
+      description="Fix authors' names if they where written separated by commas."
+      profile="rer.pubblicazioni:default"
+      source="1001"
+      destination="1002"
+      handler=".upgrades.fix_author_field"
+      />
 
   <genericsetup:upgradeStep
-    source="1002"
-    destination="1003"
-    profile="rer.pubblicazioni:default"
-    title="Add a metadata column for authors index"
-    description="Now you have 'authors' metadata in the brain."
-    handler=".upgrades.update_authors_metadata"
-    />
+      title="Add a metadata column for authors index"
+      description="Now you have 'authors' metadata in the brain."
+      profile="rer.pubblicazioni:default"
+      source="1002"
+      destination="1003"
+      handler=".upgrades.update_authors_metadata"
+      />
   <genericsetup:upgradeStep
-    source="1003"
-    destination="1100"
-    profile="rer.pubblicazioni:default"
-    title="Fix authors index encoding"
-    description=""
-    handler=".upgrades.to_1100"
-    />
+      title="Fix authors index encoding"
+      description=""
+      profile="rer.pubblicazioni:default"
+      source="1003"
+      destination="1100"
+      handler=".upgrades.to_1100"
+      />
 
   <genericsetup:upgradeStep
-    source="1100"
-    destination="1110"
-    profile="rer.pubblicazioni:default"
-    title="Remove enhancedlinks behavior"
-    description=""
-    handler=".upgrades.to_1110"
-    />
+      title="Remove enhancedlinks behavior"
+      description=""
+      profile="rer.pubblicazioni:default"
+      source="1100"
+      destination="1110"
+      handler=".upgrades.to_1110"
+      />
 
   <genericsetup:upgradeStep
-    source="1110"
-    destination="1200"
-    profile="rer.pubblicazioni:default"
-    title="Fix controlpanel label"
-    description=""
-    handler=".upgrades.import_controlpanel"
-    />
+      title="Fix controlpanel label"
+      description=""
+      profile="rer.pubblicazioni:default"
+      source="1110"
+      destination="1200"
+      handler=".upgrades.import_controlpanel"
+      />
 
   <genericsetup:upgradeStep
-    source="1200"
-    destination="1210"
-    profile="rer.pubblicazioni:default"
-    title="Convert abstract from RichText to BlocksField"
-    description=""
-    handler=".upgrades.to_1210"
-    />
+      title="Convert abstract from RichText to BlocksField"
+      description=""
+      profile="rer.pubblicazioni:default"
+      source="1200"
+      destination="1210"
+      handler=".upgrades.to_1210"
+      />
 </configure>
