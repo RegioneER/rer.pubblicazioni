@@ -1,11 +1,8 @@
-# -*- coding: utf-8 -*-
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
-from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
 from plone.app.testing import FunctionalTesting
 from plone.app.testing import IntegrationTesting
 from plone.app.testing import PloneSandboxLayer
-from plone.testing import z2
 
 import rer.pubblicazioni
 
@@ -21,29 +18,17 @@ class RerPubblicazioniLayer(PloneSandboxLayer):
         self.loadZCML(package=rer.pubblicazioni)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'rer.pubblicazioni:default')
+        applyProfile(portal, "rer.pubblicazioni:default")
 
 
 RER_PUBBLICAZIONI_FIXTURE = RerPubblicazioniLayer()
 
 
 RER_PUBBLICAZIONI_INTEGRATION_TESTING = IntegrationTesting(
-    bases=(RER_PUBBLICAZIONI_FIXTURE,),
-    name='RerPubblicazioniLayer:IntegrationTesting'
+    bases=(RER_PUBBLICAZIONI_FIXTURE,), name="RerPubblicazioniLayer:IntegrationTesting"
 )
 
 
 RER_PUBBLICAZIONI_FUNCTIONAL_TESTING = FunctionalTesting(
-    bases=(RER_PUBBLICAZIONI_FIXTURE,),
-    name='RerPubblicazioniLayer:FunctionalTesting'
-)
-
-
-RER_PUBBLICAZIONI_ACCEPTANCE_TESTING = FunctionalTesting(
-    bases=(
-        RER_PUBBLICAZIONI_FIXTURE,
-        REMOTE_LIBRARY_BUNDLE_FIXTURE,
-        z2.ZSERVER_FIXTURE
-    ),
-    name='RerPubblicazioniLayer:AcceptanceTesting'
+    bases=(RER_PUBBLICAZIONI_FIXTURE,), name="RerPubblicazioniLayer:FunctionalTesting"
 )

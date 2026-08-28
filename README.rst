@@ -6,12 +6,18 @@
 rer.pubblicazioni
 =================
 
-A new Plone5 plugin for the Regione Emilia-Romagna that manage publications.
+A Plone/Volto add-on for Regione Emilia-Romagna that adds a "Pubblicazione"
+content type to manage institutional publications (reports, laws, official
+documents, ...), with related search and listing views.
 
 Features
 --------
 
-- Can be bullet points
+- "Pubblicazione" content type with abstract, authors, publication date,
+  type, language, series, editor, rights and an attached file.
+- Vocabularies for authors, types and languages, populated from the catalog
+  and from control panel settings.
+- A collection view tailored to list and filter publications.
 
 
 Examples

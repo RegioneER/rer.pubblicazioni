@@ -1,16 +1,14 @@
-# -*- coding: utf-8 -*-
 """Module where all interfaces, events and exceptions live."""
 
-from plone.app.textfield import RichText
+from collective.volto.blocksfield.field import BlocksField
 from plone.app.z3cform.widget import AjaxSelectFieldWidget
 from plone.autoform import directives
 from plone.namedfile.field import NamedBlobFile
+from plone.restapi.controlpanels.interfaces import IControlpanel
 from rer.pubblicazioni import _
 from zope import schema
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
-from plone.restapi.controlpanels.interfaces import IControlpanel
-from collective.volto.blocksfield.field import BlocksField
 
 
 class IRerPubblicazioniLayer(IDefaultBrowserLayer):

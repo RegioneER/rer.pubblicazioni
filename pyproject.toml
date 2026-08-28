@@ -26,7 +26,7 @@ profile = "plone"
 ##
 
 [tool.black]
-target-version = ["py39"]
+target-version = ["py310"]
 
 ##
 # Add extra configuration options in .meta.toml:
@@ -37,8 +37,8 @@ target-version = ["py39"]
 ##
 
 [tool.codespell]
-ignore-words-list = "discreet,assertin,thet,"
-skip = "*.po,"
+ignore-words-list = "discreet,assertin,thet,serie"
+skip = "*.po,package-lock.json,bootstrap-buildout.py"
 ##
 # Add extra configuration options in .meta.toml:
 #  [pyproject]
@@ -106,6 +106,9 @@ ignore = [
     "dependabot.yml",
     "mx.ini",
     "tox.ini",
+    ".coveragerc",
+    "bootstrap-buildout.py",
+    "buildout.cfg",
 
 ]
 
