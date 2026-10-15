@@ -1,10 +1,12 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      xmlns:tal="http://xml.zope.org/namespaces/tal"
-      xmlns:metal="http://xml.zope.org/namespaces/metal"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
       lang="en"
       metal:use-macro="context/main_template/macros/master"
-      i18n:domain="rer.pubblicazioni">
+      xml:lang="en"
+      i18n:domain="rer.pubblicazioni"
+>
 
   <body>
 
@@ -12,16 +14,20 @@
       <metal:block define-macro="content-core">
         <dl class="publicationWrapper">
 
-          <div class="abstractwrapper publicationItem" tal:condition="context/abstract">
+          <div class="abstractwrapper publicationItem"
+               tal:condition="context/abstract"
+          >
             <dt>
               <strong i18n:translate="rer_description_abstract">Description/Abstract</strong>:
             </dt>
             <dd>
-              <div tal:replace="structure context/abstract/output|nothing" />
+              <div tal:replace="structure context/abstract/output|nothing"></div>
             </dd>
           </div>
 
-          <div class="authorWrapper publicationItem" tal:condition="context/publicationAuthor">
+          <div class="authorWrapper publicationItem"
+               tal:condition="context/publicationAuthor"
+          >
             <dt>
               <strong i18n:translate="rer_pub_author_tags">Author/Authors</strong>:
             </dt>
@@ -34,7 +40,9 @@
             </tal:author>
           </div>
 
-          <div class="publicationDateWrapper publicationItem" tal:condition="context/publicationDate">
+          <div class="publicationDateWrapper publicationItem"
+               tal:condition="context/publicationDate"
+          >
             <dt>
               <strong i18n:translate="rer_publication_date">Publication date</strong>:
             </dt>
@@ -43,16 +51,21 @@
             </dd>
           </div>
 
-          <div class="publicationTypeWrapper publicationItem" tal:condition="context/publicationType">
+          <div class="publicationTypeWrapper publicationItem"
+               tal:condition="context/publicationType"
+          >
             <dt>
-              <strong i18n:translate="rer_publication_type"> Publication type</strong>:
+              <strong i18n:translate="rer_publication_type">
+                Publication type</strong>:
             </dt>
             <tal:author tal:repeat="type context/publicationType">
               <dd>${type}</dd>
             </tal:author>
           </div>
 
-          <div class="publicationLanguageWrapper publicationItem" tal:condition="context/publicationLanguage">
+          <div class="publicationLanguageWrapper publicationItem"
+               tal:condition="context/publicationLanguage"
+          >
             <dt>
               <strong i18n:translate="rer_publication_language">Language</strong>:
             </dt>
@@ -61,7 +74,9 @@
             </dd>
           </div>
 
-          <div class="publicationSeriesWrapper publicationItem" tal:condition="context/publicationSeries">
+          <div class="publicationSeriesWrapper publicationItem"
+               tal:condition="context/publicationSeries"
+          >
             <dt>
               <strong i18n:translate="rer_published_in">Published in</strong>:
             </dt>
@@ -70,7 +85,9 @@
             </dd>
           </div>
 
-          <div class="publicationEditorWrapper publicationItem" tal:condition="context/publicationEditor">
+          <div class="publicationEditorWrapper publicationItem"
+               tal:condition="context/publicationEditor"
+          >
             <dt>
               <strong i18n:translate="rer_publication_editor">Editor</strong>:
             </dt>
@@ -79,7 +96,9 @@
             </dd>
           </div>
 
-          <div class="publicationRightsWrapper publicationItem" tal:condition="context/publicationRights">
+          <div class="publicationRightsWrapper publicationItem"
+               tal:condition="context/publicationRights"
+          >
             <dt>
               <strong i18n:translate="rer_publication_rights">Copyrights</strong>:
             </dt>
@@ -88,24 +107,38 @@
             </dd>
           </div>
 
-          <div class="urlWrapper publicationItem" tal:condition="python: context.publicationURL and context.publicationURL != 'http://'">
+          <div class="urlWrapper publicationItem"
+               tal:condition="python: context.publicationURL and context.publicationURL != 'http://'"
+          >
             <dt>
               <strong i18n:translate="rer_publication_url">URL</strong>:
             </dt>
-            <dd tal:define="pubURL context/publicationURL">
+            <dd tal:define="
+                  pubURL context/publicationURL;
+                ">
               <a href="${pubURL}">${pubURL}</a>
             </dd>
           </div>
 
-          <div class="fileWrapper publicationItem" tal:condition="context/publicationFile">
-            <tal:fileinfo tal:define="file_size python: view.get_file_size(context);
-                                      file_content_type python: view.get_mime_type(context);">
+          <div class="fileWrapper publicationItem"
+               tal:condition="context/publicationFile"
+          >
+            <tal:fileinfo tal:define="
+                            file_size python: view.get_file_size(context);
+                            file_content_type python: view.get_mime_type(context);
+                          ">
               <dt>
                 <strong i18n:translate="rer_publication_download">Scarica la pubblicazione</strong>:
               </dt>
               <dd>
-                <a tal:attributes="href string:${context/absolute_url}/@@download/publicationFile/${context/publicationFile/filename}">download</a>
-                <span class="file_info" tal:content="string: (${file_content_type}, ${file_size} MB)"></span>
+                <a tal:attributes="
+                     href string:${context/absolute_url}/@@download/publicationFile/${context/publicationFile/filename};
+                   "
+                   i18n:translate="rer_download_link"
+                >download</a>
+                <span class="file_info"
+                      tal:content="string: (${file_content_type}, ${file_size} MB)"
+                ></span>
               </dd>
             </tal:fileinfo>
           </div>

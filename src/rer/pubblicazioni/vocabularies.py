@@ -1,25 +1,24 @@
-# -*- coding: utf-8 -*-
-
-from BTrees.IIBTree import intersection
-from plone.app.layout.navigation.root import getNavigationRootObject
-from plone.app.vocabularies.terms import safe_encode
-from plone.app.vocabularies.terms import safe_simplevocabulary_from_values
-from plone.registry.interfaces import IRegistry
+from plone import api
 from Products.CMFCore.utils import getToolByName
 from zope.component import getMultiAdapter
-from zope.component import queryUtility
 from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleTerm, SimpleVocabulary
-from zope.site.hooks import getSite
-from plone import api
-from plone.volto.vocabularies.subject import (
-    KeywordsVocabulary as BaseKeywordsVocabulary,
-)
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
+
+try:
+    # plone.volto < 5
+    from plone.volto.vocabularies.subject import (
+        KeywordsVocabulary as BaseKeywordsVocabulary,
+    )
+except ImportError:
+    from plone.app.vocabularies.catalog import (
+        KeywordsVocabulary as BaseKeywordsVocabulary,
+    )
 
 
 @implementer(IVocabularyFactory)
-class Lingue(object):
+class Lingue:
     """Factory creating a 'lingue' vocabulary"""
 
     def get_terms(self, context):
@@ -46,7 +45,7 @@ class Lingue(object):
 
 
 @implementer(IVocabularyFactory)
-class Tipologie(object):
+class Tipologie:
     """Factory creating a 'lingue' vocabulary"""
 
     def get_terms(self, context):
@@ -82,7 +81,7 @@ class KeywordsVocabulary(BaseKeywordsVocabulary):
 KeywordsVocabularyFactory = KeywordsVocabulary()
 
 
-class BaseIndexValuesVocabulary(object):
+class BaseIndexValuesVocabulary:
     def __call__(self, context, query=None):
         portal = api.portal.get()
         pc = getToolByName(portal, "portal_catalog")

@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
-from plone.indexer.decorator import indexer
 from .interfaces import IPubblicazione
 from plone.app.contenttypes.indexers import _unicode_save_string_concat
 from plone.app.textfield.value import IRichTextValue
+from plone.indexer.decorator import indexer
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import safe_unicode
 

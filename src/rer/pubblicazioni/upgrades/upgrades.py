@@ -1,13 +1,11 @@
-# -*- coding: utf-8 -*-
-
-from plone import api
 from bs4 import BeautifulSoup
-from rer.pubblicazioni import logger
-import transaction
-import requests
+from plone import api
 from plone.app.textfield import RichTextValue
 from plone.volto.browser.migrate_richtext import get_blocks_from_richtext
+from rer.pubblicazioni import logger
 
+import requests
+import transaction
 
 DEFAULT_PROFILE = "profile-rer.pubblicazioni:default"
 
@@ -57,7 +55,7 @@ def update_authors_metadata(context):
     pub_brains = site.portal_catalog.unrestrictedSearchResults(
         portal_type=["Pubblicazione"],
     )
-    logger.info("Found {} pubblications".format(len(pub_brains)))
+    logger.info(f"Found {len(pub_brains)} pubblications")
     for brain in pub_brains:
         pube = brain.getObject()
         pube.reindexObject(idxs=["authors"])
@@ -70,7 +68,7 @@ def update_authors_metadata(context):
                 transaction.commit()
             except Exception as e:
                 logger.error("Error while committing transaction.")
-                logger.error("{}".format(e))
+                logger.error(f"{e}")
             pubs_changed = 0
 
 
@@ -91,8 +89,8 @@ def fix_author_field(context):
     pub_brains = site.portal_catalog.unrestrictedSearchResults(
         portal_type=["Pubblicazione"],
     )
-    logger.info("Found {} pubblications".format(len(pub_brains)))
-    logger.info("Checkin all the pubblications...")
+    logger.info(f"Found {len(pub_brains)} pubblications")
+    logger.info("Checking all the pubblications...")
     for brain in pub_brains:
         pube = brain.getObject()
         if pube.publicationAuthor:
@@ -128,7 +126,7 @@ def fix_author_field(context):
                 )
             )
             pube.reindexObject(idxs=["authors"])
-            logger.info("Fixing authors for {}".format(pube.absolute_url()))
+            logger.info(f"Fixing authors for {pube.absolute_url()}")
             pubs_changed += 1
             split_detected = False
             detected = []
@@ -138,14 +136,14 @@ def fix_author_field(context):
                     transaction.commit()
                 except Exception as e:
                     logger.error("Error while committing transaction.")
-                    logger.error("{}".format(e))
+                    logger.error(f"{e}")
                 pubs_changed = 0
 
 
 def to_1100(context):
     brains = api.content.find(portal_type="Pubblicazione")
     tot_brains = len(brains)
-    logger.info("Updating author indexes for {} Pubblicazioni".format(tot_brains))
+    logger.info(f"Updating author indexes for {tot_brains} Pubblicazioni")
     for i, brain in enumerate(brains):
         brain.getObject().reindexObject(idxs=["author"])
         logger.info(

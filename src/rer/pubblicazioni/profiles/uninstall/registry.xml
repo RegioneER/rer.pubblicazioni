@@ -1,3 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <registry>
-  <records interface="plone.app.querystring.interfaces.IQueryField" remove="true" />
+  <records interface="plone.app.querystring.interfaces.IQueryField"
+           remove="true"
+  />
 </registry>

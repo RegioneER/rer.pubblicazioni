@@ -1,0 +1,43 @@
+# Generated from:
+# https://github.com/plone/meta/tree/2.x/src/plone/meta/default
+# See the inline comments on how to expand/tweak this configuration file
+[meta]
+template = "default"
+commit-id = "2.11.1"
+
+[tox]
+test_matrix = {"6.0" = ["3.10", "3.11", "3.12", "3.13"], "6.1" = ["3.10", "3.11", "3.12", "3.13"], "6.2" = ["3.10", "3.11", "3.12", "3.14"]}
+
+[flake8]
+extra_lines = """
+exclude =
+    bootstrap-buildout.py
+"""
+
+[pyproject]
+# z3c.jbot is used declaratively via ZCML (no direct Python import).
+# plone.app.robotframework is needed only because
+# plone.app.contenttypes.testing imports it unconditionally.
+dependencies_ignores = "['z3c.jbot', 'plone.app.robotframework']"
+dependencies_mappings = [
+    "beautifulsoup4 = ['bs4']",
+]
+codespell_ignores = "serie"
+codespell_skip = "package-lock.json,bootstrap-buildout.py"
+check_manifest_ignores = """
+    ".coveragerc",
+    "bootstrap-buildout.py",
+    "buildout.cfg",
+"""
+
+[github]
+# "circular" is disabled: Products.CMFPlone 6.0.15 and plone.api 2.5.0,
+# both pinned by Plone's 6.0-dev constraints, depend on each other. This
+# is an upstream Plone packaging bug, unrelated to this package's own
+# dependencies.
+jobs = [
+    "qa",
+    "coverage",
+    "dependencies",
+    "release_ready",
+    ]

@@ -1,10 +1,17 @@
 Changelog
 =========
 
-3.0.6 (unreleased)
+3.1.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add support for Plone 6.0, 6.1 and 6.2, drop support for Python < 3.10.
+  [mamico]
+- Fix ``KeywordsVocabulary`` import, no longer available in
+  ``plone.volto.vocabularies.subject`` on recent ``plone.volto`` releases.
+  [mamico]
+- Remove robot tests and the ``plone.app.robotframework`` test dependency
+  (only unused boilerplate scenarios were present).
+  [mamico]
 
 
 3.0.5 (2025-12-11)

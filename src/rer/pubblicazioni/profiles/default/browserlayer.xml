@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <layers>
-  <layer
-      name="rer.pubblicazioni"
-      interface="rer.pubblicazioni.interfaces.IRerPubblicazioniLayer"
-      />
+  <layer interface="rer.pubblicazioni.interfaces.IRerPubblicazioniLayer"
+         name="rer.pubblicazioni"
+  />
 </layers>
