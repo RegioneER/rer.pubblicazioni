@@ -1,7 +1,7 @@
 Changelog
 =========
 
-3.1.0 (unreleased)
+3.1.0 (2026-10-15)
 ------------------
 
 - Add support for Plone 6.0, 6.1 and 6.2, drop support for Python < 3.10.
